@@ -1,0 +1,54 @@
+{
+  "repositoryCache": {
+    "scope": "dart",
+    "prefix": "repositoryCache",
+    "body": [
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "import 'package:isar/isar.dart';",
+      "import 'package:mamnon/src/data/repository/repository_mixin.dart';",
+      "import '../service/clients/client.dart';",
+      "\npart \"${1:$TM_FILENAME_BASE}.g.dart\";",
+      "",
+      "@riverpod",
+      "$2Repository $2Repository($2RepositoryRef ref) {",
+      "  return $2Repository(ref.client, ref.isar);",
+      "}",
+      " ",
+      "class $2Repository with RepositoryMixin{",
+      "  final Client _client;\n",
+      "@override",
+      "final Isar isar;\n",
+      "  const $2Repository(this._client, this.isar);",
+      "}"
+    ]
+  },
+  "repository": {
+    "scope": "dart",
+    "prefix": "repository",
+    "body": [
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "import '../service/clients/client.dart';",
+      "\npart \"${1:$TM_FILENAME_BASE}.g.dart\";",
+      "",
+      "@riverpod",
+      "$2Repository $2Repository($2RepositoryRef ref) {",
+      "  return $2Repository(ref.client);",
+      "}",
+      " ",
+      "class $2Repository {",
+      "  final Client _client;",
+      "",
+      "  const $2Repository(this._client);",
+      "}"
+    ]
+  },
+  "repositoryFunction": {
+    "scope": "dart",
+    "prefix": "repofunction",
+    "body": [
+      "Future<$1> $2({CancelToken? cancelToken}) {",
+      "  return _client.$3.$2(cancelToken: cancelToken);",
+      "}"
+    ]
+  }
+}

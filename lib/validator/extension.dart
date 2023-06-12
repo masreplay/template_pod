@@ -1,7 +1,6 @@
 import 'package:form_validator/form_validator.dart';
 
 import '../common_lib.dart';
-import 'localization.dart';
 
 extension ValidatorX on BuildContext {
   ValidationBuilder get validator {

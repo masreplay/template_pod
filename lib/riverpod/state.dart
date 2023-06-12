@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:starter/service/clients/_clients.dart';
 
 sealed class AsyncX<T> {
   const AsyncX();
@@ -21,14 +21,15 @@ class AsyncXData<T> extends AsyncX<T> {
 }
 
 mixin AsyncXProvider<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
-  Future<void> handle(Future<T> Function() callback) async {
-    state = const AsyncValue.loading();
+  @useResult
+  Future<AsyncValue<AsyncX<T>>> handle(Future<T> Function() callback) async {
+    state = AsyncValue<AsyncX<T>>.loading();
     try {
       final data = await callback();
-      state = AsyncValue.data(AsyncX.data(data));
+      return state = AsyncValue<AsyncX<T>>.data(AsyncX.data(data));
     } catch (error, stackTrace) {
       if (kDebugMode) log(toString(), error: error, stackTrace: stackTrace);
-      state = AsyncValue.error(error, stackTrace);
+      return state = AsyncValue<AsyncX<T>>.error(error, stackTrace);
     }
   }
 }
@@ -36,7 +37,7 @@ mixin AsyncXProvider<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
 extension AsyncValueExtension<T> on AsyncValue<AsyncX<T>> {
   void whenDataOrError({
     required Function(T data) data,
-    Function(Object? error, StackTrace? stackTrace)? error,
+    required Function(Object? error, StackTrace? stackTrace)? error,
   }) {
     whenOrNull(
       data: (value) {

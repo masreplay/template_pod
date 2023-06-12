@@ -14,15 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ProductsFilters _$ProductsFiltersFromJson(Map<String, dynamic> json) {
-  return _ProductsFilters.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ProductsFilters {
   int get page => throw _privateConstructorUsedError;
   int get prePage => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductsFiltersCopyWith<ProductsFilters> get copyWith =>
       throw _privateConstructorUsedError;
@@ -106,12 +103,9 @@ class __$$_ProductsFiltersCopyWithImpl<$Res>
 
 /// @nodoc
 
-@jsonSerializable
+@jsonSerializableRequest
 class _$_ProductsFilters implements _ProductsFilters {
   const _$_ProductsFilters({required this.page, required this.prePage});
-
-  factory _$_ProductsFilters.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductsFiltersFromJson(json);
 
   @override
   final int page;
@@ -141,15 +135,19 @@ class _$_ProductsFilters implements _ProductsFilters {
   @pragma('vm:prefer-inline')
   _$$_ProductsFiltersCopyWith<_$_ProductsFilters> get copyWith =>
       __$$_ProductsFiltersCopyWithImpl<_$_ProductsFilters>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ProductsFiltersToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ProductsFilters implements ProductsFilters {
   const factory _ProductsFilters(
       {required final int page,
       required final int prePage}) = _$_ProductsFilters;
-
-  factory _ProductsFilters.fromJson(Map<String, dynamic> json) =
-      _$_ProductsFilters.fromJson;
 
   @override
   int get page;

@@ -20,8 +20,8 @@ const freezedUnionResponse = Freezed(
 );
 
 const freezedRequest = Freezed(
-  toJson: false,
-  fromJson: true,
+  toJson: true,
+  fromJson: false,
 );
 
 const freezedUnionRequest = Freezed(

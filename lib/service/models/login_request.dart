@@ -8,8 +8,8 @@ class LoginRequest with _$LoginRequest {
   const LoginRequest._();
 
   @jsonSerializableRequest
-  const factory LoginRequest() = _LoginRequest;
-
-  factory LoginRequest.fromJson(Map<String, dynamic> json) =>
-      _$LoginRequestFromJson(json);
+  const factory LoginRequest({
+    required String email,
+    required String password,
+  }) = _LoginRequest;
 }

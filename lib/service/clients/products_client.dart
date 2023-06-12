@@ -17,12 +17,9 @@ abstract class ProductsClient {
 
 @freezedRequest
 class ProductsFilters with _$ProductsFilters {
-  @jsonSerializable
+  @jsonSerializableRequest
   const factory ProductsFilters({
     required int page,
     required int prePage,
   }) = _ProductsFilters;
-
-  factory ProductsFilters.fromJson(Map<String, dynamic> json) =>
-      _$ProductsFiltersFromJson(json);
 }

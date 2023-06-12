@@ -7,4 +7,7 @@ part of 'login_request.dart';
 // **************************************************************************
 
 Map<String, dynamic> _$$_LoginRequestToJson(_$_LoginRequest instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
+    };

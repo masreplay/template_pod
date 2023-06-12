@@ -6,12 +6,6 @@ part of 'products_client.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductsFilters _$$_ProductsFiltersFromJson(Map<String, dynamic> json) =>
-    _$_ProductsFilters(
-      page: json['page'] as int,
-      prePage: json['pre_page'] as int,
-    );
-
 Map<String, dynamic> _$$_ProductsFiltersToJson(_$_ProductsFilters instance) =>
     <String, dynamic>{
       'page': instance.page,

@@ -14,18 +14,24 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LoginRequest _$LoginRequestFromJson(Map<String, dynamic> json) {
-  return _LoginRequest.fromJson(json);
-}
-
 /// @nodoc
-mixin _$LoginRequest {}
+mixin _$LoginRequest {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoginRequestCopyWith<LoginRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $LoginRequestCopyWith<$Res> {
   factory $LoginRequestCopyWith(
           LoginRequest value, $Res Function(LoginRequest) then) =
       _$LoginRequestCopyWithImpl<$Res, LoginRequest>;
+  @useResult
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -37,13 +43,35 @@ class _$LoginRequestCopyWithImpl<$Res, $Val extends LoginRequest>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_LoginRequestCopyWith<$Res> {
+abstract class _$$_LoginRequestCopyWith<$Res>
+    implements $LoginRequestCopyWith<$Res> {
   factory _$$_LoginRequestCopyWith(
           _$_LoginRequest value, $Res Function(_$_LoginRequest) then) =
       __$$_LoginRequestCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -53,37 +81,83 @@ class __$$_LoginRequestCopyWithImpl<$Res>
   __$$_LoginRequestCopyWithImpl(
       _$_LoginRequest _value, $Res Function(_$_LoginRequest) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_$_LoginRequest(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 @jsonSerializableRequest
 class _$_LoginRequest extends _LoginRequest {
-  const _$_LoginRequest() : super._();
+  const _$_LoginRequest({required this.email, required this.password})
+      : super._();
 
-  factory _$_LoginRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_LoginRequestFromJson(json);
+  @override
+  final String email;
+  @override
+  final String password;
 
   @override
   String toString() {
-    return 'LoginRequest()';
+    return 'LoginRequest(email: $email, password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoginRequest);
+        (other.runtimeType == runtimeType &&
+            other is _$_LoginRequest &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, email, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoginRequestCopyWith<_$_LoginRequest> get copyWith =>
+      __$$_LoginRequestCopyWithImpl<_$_LoginRequest>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LoginRequestToJson(
+      this,
+    );
+  }
 }
 
 abstract class _LoginRequest extends LoginRequest {
-  const factory _LoginRequest() = _$_LoginRequest;
+  const factory _LoginRequest(
+      {required final String email,
+      required final String password}) = _$_LoginRequest;
   const _LoginRequest._() : super._();
 
-  factory _LoginRequest.fromJson(Map<String, dynamic> json) =
-      _$_LoginRequest.fromJson;
+  @override
+  String get email;
+  @override
+  String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoginRequestCopyWith<_$_LoginRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,6 +1,8 @@
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
+import 'package:starter/data/shared_preferences/authentication_provider.dart';
 import 'package:starter/riverpod/riverpod.dart';
+import 'package:starter/router/router.dart';
 import 'package:starter/service/clients/_clients.dart';
 import 'package:starter/widgets/logo.dart';
 
@@ -13,7 +15,13 @@ class Login extends _$Login with AsyncXProvider {
 
   @useResult
   Future<AsyncValue<AsyncX<LoginResponse>>> run(LoginRequest data) =>
-      handle(() => ref.read(authRepositoryProvider).login(data));
+      handle(() async {
+        final result = await ref.read(authRepositoryProvider).login(data);
+        await ref
+            .read(authenticationProvider.notifier)
+            .update((state) => result);
+        return result;
+      });
 }
 
 @RoutePage()
@@ -65,7 +73,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               ),
             ),
           ),
-          ElevatedButton(
+          FilledButton(
             onPressed: login.isLoading
                 ? null
                 : () async {
@@ -81,8 +89,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     state.whenDataOrError(
                       data: (data) {
                         context.showSuccessSnackBar(context.l10n.loginSuccess);
+                        context.router.replace(
+                          const MainRoute(children: [HomeRoute()]),
+                        );
                       },
-                      error: (Object? error, StackTrace? stackTrace) {},
+                      error: (error, stackTrace) {
+                        context.showErrorSnackBar(
+                          context.l10n.defaultErrorMessage,
+                        );
+                      },
                     );
                   },
             child: login.isLoading

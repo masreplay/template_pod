@@ -1,6 +1,8 @@
 {
   "ar": [
     "home",
-    "login"
+    "login",
+    "defaultErrorMessage",
+    "more"
   ]
 }

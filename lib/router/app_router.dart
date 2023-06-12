@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starter/src/main/home/home_page.dart';
 import 'package:starter/src/auth/login/login_page.dart';
 import 'package:starter/src/main/main_page.dart';
+import 'package:starter/src/main/more/more_page.dart';
 
 import 'authentication_guard.dart';
 
@@ -34,6 +35,10 @@ class AppRouter extends _$AppRouter {
           AutoRoute(
             initial: true,
             page: HomeRoute.page,
+          ),
+          AutoRoute(
+            path: 'more',
+            page: MoreRoute.page,
           ),
         ],
       ),

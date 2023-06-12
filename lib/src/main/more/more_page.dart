@@ -1,5 +1,6 @@
 import 'package:starter/common_lib.dart';
 
+@RoutePage()
 class MorePage extends ConsumerStatefulWidget {
   const MorePage({super.key});
 

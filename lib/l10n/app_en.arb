@@ -26,5 +26,7 @@
   "validatorUrl": "The field is not a valid URL address",
   "phoneNumber": "Phone number",
   "password": "password",
-  "loginSuccess": "Login successful"
+  "loginSuccess": "Login successful",
+  "defaultErrorMessage": "An error occurred, please try again later",
+  "more": "more"
 }

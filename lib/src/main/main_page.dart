@@ -22,6 +22,11 @@ class _MainPageState extends ConsumerState<MainPage> {
         icon: Icons.home,
         name: context.l10n.home,
       ),
+      (
+        route: const MoreRoute(),
+        icon: Icons.more_horiz,
+        name: context.l10n.more,
+      ),
     ];
 
     final theme = Theme.of(context);
@@ -30,20 +35,20 @@ class _MainPageState extends ConsumerState<MainPage> {
       routes: [for (final routeData in routesData) routeData.route],
       transitionBuilder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
-        // final selected = tabsRouter.activeIndex;
 
         return Scaffold(
           body: FadeTransition(opacity: animation, child: child),
           appBar: AppBar(title: Text(context.l10n.appName)),
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: tabsRouter.setActiveIndex,
+          bottomNavigationBar: NavigationBar(
+            onDestinationSelected: tabsRouter.setActiveIndex,
+            selectedIndex: tabsRouter.activeIndex,
             backgroundColor: theme.colorScheme.background,
-            items: [
+            destinations: [
               for (final routeData in routesData)
-                BottomNavigationBarItem(
+                NavigationDestination(
                   icon: Icon(routeData.icon),
                   label: routeData.name,
-                ),
+                )
             ],
           ),
         );

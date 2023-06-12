@@ -8,7 +8,10 @@ class LoginResponse with _$LoginResponse {
   const LoginResponse._();
 
   @jsonSerializable
-  const factory LoginResponse() = _LoginResponse;
+  const factory LoginResponse({
+    required String token,
+    required String refreshToken,
+  }) = _LoginResponse;
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseFromJson(json);

@@ -42,7 +42,7 @@ class _MainAppState extends ConsumerState<MainApp> {
       ),
       routeInformationProvider: _appRouter.routeInfoProvider(),
       routeInformationParser: _appRouter.defaultRouteParser(),
-      routerConfig: _appRouter.config(),
+      // routerConfig: _appRouter.config(),
       // Locale
       locale: settings.locale,
       onGenerateTitle: (context) => context.l10n.appName,

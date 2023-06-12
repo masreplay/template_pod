@@ -20,7 +20,13 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginResponse {
+  String get token => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoginResponseCopyWith<LoginResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -28,6 +34,8 @@ abstract class $LoginResponseCopyWith<$Res> {
   factory $LoginResponseCopyWith(
           LoginResponse value, $Res Function(LoginResponse) then) =
       _$LoginResponseCopyWithImpl<$Res, LoginResponse>;
+  @useResult
+  $Res call({String token, String refreshToken});
 }
 
 /// @nodoc
@@ -39,13 +47,35 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+    Object? refreshToken = null,
+  }) {
+    return _then(_value.copyWith(
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_LoginResponseCopyWith<$Res> {
+abstract class _$$_LoginResponseCopyWith<$Res>
+    implements $LoginResponseCopyWith<$Res> {
   factory _$$_LoginResponseCopyWith(
           _$_LoginResponse value, $Res Function(_$_LoginResponse) then) =
       __$$_LoginResponseCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String token, String refreshToken});
 }
 
 /// @nodoc
@@ -55,31 +85,65 @@ class __$$_LoginResponseCopyWithImpl<$Res>
   __$$_LoginResponseCopyWithImpl(
       _$_LoginResponse _value, $Res Function(_$_LoginResponse) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+    Object? refreshToken = null,
+  }) {
+    return _then(_$_LoginResponse(
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 @jsonSerializable
 class _$_LoginResponse extends _LoginResponse {
-  const _$_LoginResponse() : super._();
+  const _$_LoginResponse({required this.token, required this.refreshToken})
+      : super._();
 
   factory _$_LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$$_LoginResponseFromJson(json);
 
   @override
+  final String token;
+  @override
+  final String refreshToken;
+
+  @override
   String toString() {
-    return 'LoginResponse()';
+    return 'LoginResponse(token: $token, refreshToken: $refreshToken)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoginResponse);
+        (other.runtimeType == runtimeType &&
+            other is _$_LoginResponse &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, token, refreshToken);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoginResponseCopyWith<_$_LoginResponse> get copyWith =>
+      __$$_LoginResponseCopyWithImpl<_$_LoginResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -90,9 +154,20 @@ class _$_LoginResponse extends _LoginResponse {
 }
 
 abstract class _LoginResponse extends LoginResponse {
-  const factory _LoginResponse() = _$_LoginResponse;
+  const factory _LoginResponse(
+      {required final String token,
+      required final String refreshToken}) = _$_LoginResponse;
   const _LoginResponse._() : super._();
 
   factory _LoginResponse.fromJson(Map<String, dynamic> json) =
       _$_LoginResponse.fromJson;
+
+  @override
+  String get token;
+  @override
+  String get refreshToken;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoginResponseCopyWith<_$_LoginResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }

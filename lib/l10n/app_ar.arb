@@ -1,4 +1,12 @@
 {
     "appName": "",
-    "username": "الاسم: {username}"
+    "username": "الاسم: {username}",
+    "validatorMinLength": "رجاءً أدخل {n} أحرف على الأقل",
+    "validatorMaxLength": "رجاءً أدخل {n} أحرف على الأكثر",
+    "validatorEmail": "البريد الإلكتروني غير صحيح",
+    "validatorPhoneNumber": "رقم الهاتف غير صحيح",
+    "validatorRequired": "هذا الحقل مطلوب",
+    "validatorUrl": "الرابط غير صحيح",
+    "phoneNumber": "رقم الهاتف",
+    "password": "كلمة المرور"
 }

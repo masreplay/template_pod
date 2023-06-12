@@ -7,7 +7,13 @@ part of 'login_response.dart';
 // **************************************************************************
 
 _$_LoginResponse _$$_LoginResponseFromJson(Map<String, dynamic> json) =>
-    _$_LoginResponse();
+    _$_LoginResponse(
+      token: json['token'] as String,
+      refreshToken: json['refresh_token'] as String,
+    );
 
 Map<String, dynamic> _$$_LoginResponseToJson(_$_LoginResponse instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'token': instance.token,
+      'refresh_token': instance.refreshToken,
+    };

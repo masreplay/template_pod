@@ -6,5 +6,7 @@
     "lib/router",
     "lib/service",
     "lib/theme",
-    "lib/data/shared_preferences"
+    "lib/data/shared_preferences",
+    "lib/widgets",
+    "lib/validator"
 ]

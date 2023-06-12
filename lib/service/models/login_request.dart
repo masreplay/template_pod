@@ -9,7 +9,7 @@ class LoginRequest with _$LoginRequest {
 
   @jsonSerializableRequest
   const factory LoginRequest({
-    required String email,
+    @JsonKey(name: 'phoneNumber') required String username,
     required String password,
   }) = _LoginRequest;
 }

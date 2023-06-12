@@ -1,9 +1,29 @@
 {
   "appName": "",
   "username": "name: {username}",
+  "home": "home",
+  "login": "login",
   "@username": {
     "placeholders": {
       "username": {}
     }
-  }
+  },
+  "validatorMinLength": "The field must be at least {n} characters long",
+  "@validatorMinLength":{
+    "placeholders": {
+      "n": {}
+    }
+  },
+  "validatorMaxLength": "The field must be at most {n} characters long",
+  "@validatorMaxLength":{
+    "placeholders": {
+      "n": {}
+    }
+  },
+  "validatorEmail": "The field is not a valid email address",
+  "validatorPhoneNumber": "The field is not a valid phone number",
+  "validatorRequired": "field is required",
+  "validatorUrl": "The field is not a valid URL address",
+  "phoneNumber": "Phone number",
+  "password": "password"
 }

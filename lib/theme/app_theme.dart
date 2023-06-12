@@ -5,6 +5,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
+      inputDecorationTheme: _buildInputDecorationTheme(brightness),
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.blue,
         brightness: brightness,
@@ -12,11 +13,13 @@ class AppTheme {
     );
   }
 
-  ThemeData buildDarkTheme() {
-    return _build(Brightness.dark);
-  }
+  ThemeData buildDarkTheme() => _build(Brightness.dark);
 
-  ThemeData buildLightTheme() {
-    return _build(Brightness.light);
+  ThemeData buildLightTheme() => _build(Brightness.light);
+
+  InputDecorationTheme _buildInputDecorationTheme(Brightness brightness) {
+    return const InputDecorationTheme(
+      border: OutlineInputBorder(),
+    );
   }
 }

@@ -12,7 +12,7 @@ function export_files() {
 
     for f in $files; do
         file=$(echo $f | rev | cut -d'/' -f1 | rev)
-        if [[ $f != *.g.dart ]] && [[ $f != *.freezed.dart ]] && [[ $f != $filename ]] && [[ $file != _* ]] && [[ $f != *DS_Store ]]; then
+        if [[ $f != *.g.dart ]] && [[ $f != *.gr.dart ]] && [[ $f != *.freezed.dart ]] && [[ $f != $filename ]] && [[ $file != _* ]] && [[ $f != *DS_Store ]]; then
 
             echo "export './${f#$1/}';" >>"$filename"
         fi

@@ -2,5 +2,8 @@
     "lib/service/models",
     "lib/service/clients",
     "lib/service/annotations",
-    "lib/service"
+    "lib/service/interceptors",
+    "lib/router",
+    "lib/service",
+    "lib/theme"
 ]

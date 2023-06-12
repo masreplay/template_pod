@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_data_client.dart';
+part of 'auth_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'home_data_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _HomeDataClient implements HomeDataClient {
-  _HomeDataClient(
+class _AuthClient implements AuthClient {
+  _AuthClient(
     this._dio, {
     this.baseUrl,
   });
@@ -19,28 +19,25 @@ class _HomeDataClient implements HomeDataClient {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<List<HomeDataResponse>>> getAll() async {
+  Future<HttpResponse<LoginResponse>> login(data) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<HttpResponse<List<HomeDataResponse>>>(Options(
-      method: 'GET',
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<LoginResponse>>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/home/',
+              '/login',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map(
-            (dynamic i) => HomeDataResponse.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = LoginResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
@@ -63,19 +60,18 @@ class _HomeDataClient implements HomeDataClient {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeDataClientHash() => r'4cc446641b79b0d2e892ad9566b4849f93d421d6';
+String _$authClientHash() => r'2ff0043f25ca8a401845f011e17d6090a60e115f';
 
-/// See also [homeDataClient].
-@ProviderFor(homeDataClient)
-final homeDataClientProvider = AutoDisposeProvider<HomeDataClient>.internal(
-  homeDataClient,
-  name: r'homeDataClientProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$homeDataClientHash,
+/// See also [authClient].
+@ProviderFor(authClient)
+final authClientProvider = AutoDisposeProvider<AuthClient>.internal(
+  authClient,
+  name: r'authClientProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$authClientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef HomeDataClientRef = AutoDisposeProviderRef<HomeDataClient>;
+typedef AuthClientRef = AutoDisposeProviderRef<AuthClient>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

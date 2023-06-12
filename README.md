@@ -1,3 +1,5 @@
 # starter
 
-A new Flutter project.
+model,
+riverpod,
+ui

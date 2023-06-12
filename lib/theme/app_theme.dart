@@ -11,4 +11,12 @@ class AppTheme {
       ),
     );
   }
+
+  ThemeData buildDarkTheme() {
+    return _build(Brightness.dark);
+  }
+
+  ThemeData buildLightTheme() {
+    return _build(Brightness.light);
+  }
 }

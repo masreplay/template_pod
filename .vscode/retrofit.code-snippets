@@ -62,9 +62,12 @@
       "",
       "part \"$TM_FILENAME_BASE.g.dart\";",
       "",
+      "@riverpod",
+      "${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/} ${TM_FILENAME_BASE/(.+)/${1:/camelcase}/}(${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/}Ref ref) => ${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/}(ref.dio);",
+      "",
       "@RestApi()",
-      "abstract class ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/upcase}/g} {",
-      "  factory ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/upcase}/g}(Dio dio, {String baseUrl}) = _${TM_FILENAME_BASE/(_|^)(\\w)/${2:/upcase}/g};",
+      "abstract class ${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/} {",
+      "  factory ${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/}(Dio dio, {String baseUrl}) = _${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/};",
       "}"
     ]
   }

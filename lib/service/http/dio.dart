@@ -7,6 +7,11 @@ part 'dio.g.dart';
 @riverpod
 Dio dio(DioRef ref) {
   final dio = Dio();
+  dio.options
+    ..baseUrl = "https://api.github.com"
+    ..connectTimeout = const Duration(seconds: 30)
+    ..sendTimeout = const Duration(seconds: 60);
+
   dio.interceptors.addAll(
     [
       LogInterceptor(),

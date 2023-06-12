@@ -11,5 +11,5 @@ class HomeDataRepository {
 
   const HomeDataRepository(this._client);
 
-  getHomeData() => _client.getAll().data;
+  Future<List<HomeDataResponse>> getHomeData() => _client.getAll().data;
 }

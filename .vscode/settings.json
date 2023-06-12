@@ -22,5 +22,7 @@
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart, $(capture).gr.dart",
     "mason.yaml": "mason-lock.json"
   },
-  "cSpell.words": [],
+  "cSpell.words": [
+    "horiz"
+  ],
 }

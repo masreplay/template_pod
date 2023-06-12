@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 HomeDataResponse _$HomeDataResponseFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
     case 'products':
-      return _HomeDataResponseItems.fromJson(json);
+      return HomeDataResponseItems.fromJson(json);
     case 'Shops':
-      return _HomeDataResponseShops.fromJson(json);
+      return HomeDataResponseShops.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'type', 'HomeDataResponse',
@@ -29,43 +29,49 @@ HomeDataResponse _$HomeDataResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HomeDataResponse {
+  String get title => throw _privateConstructorUsedError;
+  List<Object> get items => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<HomeDataItem> items) items,
-    required TResult Function() shops,
+    required TResult Function(String title, List<HomeDataProduct> items) items,
+    required TResult Function(String title, List<String> items) shops,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<HomeDataItem> items)? items,
-    TResult? Function()? shops,
+    TResult? Function(String title, List<HomeDataProduct> items)? items,
+    TResult? Function(String title, List<String> items)? shops,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<HomeDataItem> items)? items,
-    TResult Function()? shops,
+    TResult Function(String title, List<HomeDataProduct> items)? items,
+    TResult Function(String title, List<String> items)? shops,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeDataResponseItems value) items,
-    required TResult Function(_HomeDataResponseShops value) shops,
+    required TResult Function(HomeDataResponseItems value) items,
+    required TResult Function(HomeDataResponseShops value) shops,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeDataResponseItems value)? items,
-    TResult? Function(_HomeDataResponseShops value)? shops,
+    TResult? Function(HomeDataResponseItems value)? items,
+    TResult? Function(HomeDataResponseShops value)? shops,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeDataResponseItems value)? items,
-    TResult Function(_HomeDataResponseShops value)? shops,
+    TResult Function(HomeDataResponseItems value)? items,
+    TResult Function(HomeDataResponseShops value)? shops,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeDataResponseCopyWith<HomeDataResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -74,6 +80,8 @@ abstract class $HomeDataResponseCopyWith<$Res> {
   factory $HomeDataResponseCopyWith(
           HomeDataResponse value, $Res Function(HomeDataResponse) then) =
       _$HomeDataResponseCopyWithImpl<$Res, HomeDataResponse>;
+  @useResult
+  $Res call({String title});
 }
 
 /// @nodoc
@@ -85,35 +93,55 @@ class _$HomeDataResponseCopyWithImpl<$Res, $Val extends HomeDataResponse>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+  }) {
+    return _then(_value.copyWith(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_HomeDataResponseItemsCopyWith<$Res> {
-  factory _$$_HomeDataResponseItemsCopyWith(_$_HomeDataResponseItems value,
-          $Res Function(_$_HomeDataResponseItems) then) =
-      __$$_HomeDataResponseItemsCopyWithImpl<$Res>;
+abstract class _$$HomeDataResponseItemsCopyWith<$Res>
+    implements $HomeDataResponseCopyWith<$Res> {
+  factory _$$HomeDataResponseItemsCopyWith(_$HomeDataResponseItems value,
+          $Res Function(_$HomeDataResponseItems) then) =
+      __$$HomeDataResponseItemsCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({List<HomeDataItem> items});
+  $Res call({String title, List<HomeDataProduct> items});
 }
 
 /// @nodoc
-class __$$_HomeDataResponseItemsCopyWithImpl<$Res>
-    extends _$HomeDataResponseCopyWithImpl<$Res, _$_HomeDataResponseItems>
-    implements _$$_HomeDataResponseItemsCopyWith<$Res> {
-  __$$_HomeDataResponseItemsCopyWithImpl(_$_HomeDataResponseItems _value,
-      $Res Function(_$_HomeDataResponseItems) _then)
+class __$$HomeDataResponseItemsCopyWithImpl<$Res>
+    extends _$HomeDataResponseCopyWithImpl<$Res, _$HomeDataResponseItems>
+    implements _$$HomeDataResponseItemsCopyWith<$Res> {
+  __$$HomeDataResponseItemsCopyWithImpl(_$HomeDataResponseItems _value,
+      $Res Function(_$HomeDataResponseItems) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? title = null,
     Object? items = null,
   }) {
-    return _then(_$_HomeDataResponseItems(
+    return _then(_$HomeDataResponseItems(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<HomeDataItem>,
+              as List<HomeDataProduct>,
     ));
   }
 }
@@ -121,18 +149,22 @@ class __$$_HomeDataResponseItemsCopyWithImpl<$Res>
 /// @nodoc
 
 @jsonSerializableResponse
-class _$_HomeDataResponseItems implements _HomeDataResponseItems {
-  const _$_HomeDataResponseItems(
-      {required final List<HomeDataItem> items, final String? $type})
+class _$HomeDataResponseItems implements HomeDataResponseItems {
+  const _$HomeDataResponseItems(
+      {required this.title,
+      required final List<HomeDataProduct> items,
+      final String? $type})
       : _items = items,
         $type = $type ?? 'products';
 
-  factory _$_HomeDataResponseItems.fromJson(Map<String, dynamic> json) =>
-      _$$_HomeDataResponseItemsFromJson(json);
+  factory _$HomeDataResponseItems.fromJson(Map<String, dynamic> json) =>
+      _$$HomeDataResponseItemsFromJson(json);
 
-  final List<HomeDataItem> _items;
   @override
-  List<HomeDataItem> get items {
+  final String title;
+  final List<HomeDataProduct> _items;
+  @override
+  List<HomeDataProduct> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -143,56 +175,57 @@ class _$_HomeDataResponseItems implements _HomeDataResponseItems {
 
   @override
   String toString() {
-    return 'HomeDataResponse.items(items: $items)';
+    return 'HomeDataResponse.items(title: $title, items: $items)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeDataResponseItems &&
+            other is _$HomeDataResponseItems &&
+            (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType, title, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeDataResponseItemsCopyWith<_$_HomeDataResponseItems> get copyWith =>
-      __$$_HomeDataResponseItemsCopyWithImpl<_$_HomeDataResponseItems>(
+  _$$HomeDataResponseItemsCopyWith<_$HomeDataResponseItems> get copyWith =>
+      __$$HomeDataResponseItemsCopyWithImpl<_$HomeDataResponseItems>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<HomeDataItem> items) items,
-    required TResult Function() shops,
+    required TResult Function(String title, List<HomeDataProduct> items) items,
+    required TResult Function(String title, List<String> items) shops,
   }) {
-    return items(this.items);
+    return items(title, this.items);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<HomeDataItem> items)? items,
-    TResult? Function()? shops,
+    TResult? Function(String title, List<HomeDataProduct> items)? items,
+    TResult? Function(String title, List<String> items)? shops,
   }) {
-    return items?.call(this.items);
+    return items?.call(title, this.items);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<HomeDataItem> items)? items,
-    TResult Function()? shops,
+    TResult Function(String title, List<HomeDataProduct> items)? items,
+    TResult Function(String title, List<String> items)? shops,
     required TResult orElse(),
   }) {
     if (items != null) {
-      return items(this.items);
+      return items(title, this.items);
     }
     return orElse();
   }
@@ -200,8 +233,8 @@ class _$_HomeDataResponseItems implements _HomeDataResponseItems {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeDataResponseItems value) items,
-    required TResult Function(_HomeDataResponseShops value) shops,
+    required TResult Function(HomeDataResponseItems value) items,
+    required TResult Function(HomeDataResponseShops value) shops,
   }) {
     return items(this);
   }
@@ -209,8 +242,8 @@ class _$_HomeDataResponseItems implements _HomeDataResponseItems {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeDataResponseItems value)? items,
-    TResult? Function(_HomeDataResponseShops value)? shops,
+    TResult? Function(HomeDataResponseItems value)? items,
+    TResult? Function(HomeDataResponseShops value)? shops,
   }) {
     return items?.call(this);
   }
@@ -218,8 +251,8 @@ class _$_HomeDataResponseItems implements _HomeDataResponseItems {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeDataResponseItems value)? items,
-    TResult Function(_HomeDataResponseShops value)? shops,
+    TResult Function(HomeDataResponseItems value)? items,
+    TResult Function(HomeDataResponseShops value)? shops,
     required TResult orElse(),
   }) {
     if (items != null) {
@@ -229,90 +262,142 @@ class _$_HomeDataResponseItems implements _HomeDataResponseItems {
   }
 }
 
-abstract class _HomeDataResponseItems implements HomeDataResponse {
-  const factory _HomeDataResponseItems(
-      {required final List<HomeDataItem> items}) = _$_HomeDataResponseItems;
+abstract class HomeDataResponseItems implements HomeDataResponse {
+  const factory HomeDataResponseItems(
+      {required final String title,
+      required final List<HomeDataProduct> items}) = _$HomeDataResponseItems;
 
-  factory _HomeDataResponseItems.fromJson(Map<String, dynamic> json) =
-      _$_HomeDataResponseItems.fromJson;
+  factory HomeDataResponseItems.fromJson(Map<String, dynamic> json) =
+      _$HomeDataResponseItems.fromJson;
 
-  List<HomeDataItem> get items;
+  @override
+  String get title;
+  @override
+  List<HomeDataProduct> get items;
+  @override
   @JsonKey(ignore: true)
-  _$$_HomeDataResponseItemsCopyWith<_$_HomeDataResponseItems> get copyWith =>
+  _$$HomeDataResponseItemsCopyWith<_$HomeDataResponseItems> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_HomeDataResponseShopsCopyWith<$Res> {
-  factory _$$_HomeDataResponseShopsCopyWith(_$_HomeDataResponseShops value,
-          $Res Function(_$_HomeDataResponseShops) then) =
-      __$$_HomeDataResponseShopsCopyWithImpl<$Res>;
+abstract class _$$HomeDataResponseShopsCopyWith<$Res>
+    implements $HomeDataResponseCopyWith<$Res> {
+  factory _$$HomeDataResponseShopsCopyWith(_$HomeDataResponseShops value,
+          $Res Function(_$HomeDataResponseShops) then) =
+      __$$HomeDataResponseShopsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String title, List<String> items});
 }
 
 /// @nodoc
-class __$$_HomeDataResponseShopsCopyWithImpl<$Res>
-    extends _$HomeDataResponseCopyWithImpl<$Res, _$_HomeDataResponseShops>
-    implements _$$_HomeDataResponseShopsCopyWith<$Res> {
-  __$$_HomeDataResponseShopsCopyWithImpl(_$_HomeDataResponseShops _value,
-      $Res Function(_$_HomeDataResponseShops) _then)
+class __$$HomeDataResponseShopsCopyWithImpl<$Res>
+    extends _$HomeDataResponseCopyWithImpl<$Res, _$HomeDataResponseShops>
+    implements _$$HomeDataResponseShopsCopyWith<$Res> {
+  __$$HomeDataResponseShopsCopyWithImpl(_$HomeDataResponseShops _value,
+      $Res Function(_$HomeDataResponseShops) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? items = null,
+  }) {
+    return _then(_$HomeDataResponseShops(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
 }
 
 /// @nodoc
 
 @jsonSerializableResponse
-class _$_HomeDataResponseShops implements _HomeDataResponseShops {
-  const _$_HomeDataResponseShops({final String? $type})
-      : $type = $type ?? 'Shops';
+class _$HomeDataResponseShops implements HomeDataResponseShops {
+  const _$HomeDataResponseShops(
+      {required this.title,
+      required final List<String> items,
+      final String? $type})
+      : _items = items,
+        $type = $type ?? 'Shops';
 
-  factory _$_HomeDataResponseShops.fromJson(Map<String, dynamic> json) =>
-      _$$_HomeDataResponseShopsFromJson(json);
+  factory _$HomeDataResponseShops.fromJson(Map<String, dynamic> json) =>
+      _$$HomeDataResponseShopsFromJson(json);
+
+  @override
+  final String title;
+  final List<String> _items;
+  @override
+  List<String> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'HomeDataResponse.shops()';
+    return 'HomeDataResponse.shops(title: $title, items: $items)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_HomeDataResponseShops);
+        (other.runtimeType == runtimeType &&
+            other is _$HomeDataResponseShops &&
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, title, const DeepCollectionEquality().hash(_items));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HomeDataResponseShopsCopyWith<_$HomeDataResponseShops> get copyWith =>
+      __$$HomeDataResponseShopsCopyWithImpl<_$HomeDataResponseShops>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<HomeDataItem> items) items,
-    required TResult Function() shops,
+    required TResult Function(String title, List<HomeDataProduct> items) items,
+    required TResult Function(String title, List<String> items) shops,
   }) {
-    return shops();
+    return shops(title, this.items);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<HomeDataItem> items)? items,
-    TResult? Function()? shops,
+    TResult? Function(String title, List<HomeDataProduct> items)? items,
+    TResult? Function(String title, List<String> items)? shops,
   }) {
-    return shops?.call();
+    return shops?.call(title, this.items);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<HomeDataItem> items)? items,
-    TResult Function()? shops,
+    TResult Function(String title, List<HomeDataProduct> items)? items,
+    TResult Function(String title, List<String> items)? shops,
     required TResult orElse(),
   }) {
     if (shops != null) {
-      return shops();
+      return shops(title, this.items);
     }
     return orElse();
   }
@@ -320,8 +405,8 @@ class _$_HomeDataResponseShops implements _HomeDataResponseShops {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeDataResponseItems value) items,
-    required TResult Function(_HomeDataResponseShops value) shops,
+    required TResult Function(HomeDataResponseItems value) items,
+    required TResult Function(HomeDataResponseShops value) shops,
   }) {
     return shops(this);
   }
@@ -329,8 +414,8 @@ class _$_HomeDataResponseShops implements _HomeDataResponseShops {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeDataResponseItems value)? items,
-    TResult? Function(_HomeDataResponseShops value)? shops,
+    TResult? Function(HomeDataResponseItems value)? items,
+    TResult? Function(HomeDataResponseShops value)? shops,
   }) {
     return shops?.call(this);
   }
@@ -338,8 +423,8 @@ class _$_HomeDataResponseShops implements _HomeDataResponseShops {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeDataResponseItems value)? items,
-    TResult Function(_HomeDataResponseShops value)? shops,
+    TResult Function(HomeDataResponseItems value)? items,
+    TResult Function(HomeDataResponseShops value)? shops,
     required TResult orElse(),
   }) {
     if (shops != null) {
@@ -349,19 +434,30 @@ class _$_HomeDataResponseShops implements _HomeDataResponseShops {
   }
 }
 
-abstract class _HomeDataResponseShops implements HomeDataResponse {
-  const factory _HomeDataResponseShops() = _$_HomeDataResponseShops;
+abstract class HomeDataResponseShops implements HomeDataResponse {
+  const factory HomeDataResponseShops(
+      {required final String title,
+      required final List<String> items}) = _$HomeDataResponseShops;
 
-  factory _HomeDataResponseShops.fromJson(Map<String, dynamic> json) =
-      _$_HomeDataResponseShops.fromJson;
+  factory HomeDataResponseShops.fromJson(Map<String, dynamic> json) =
+      _$HomeDataResponseShops.fromJson;
+
+  @override
+  String get title;
+  @override
+  List<String> get items;
+  @override
+  @JsonKey(ignore: true)
+  _$$HomeDataResponseShopsCopyWith<_$HomeDataResponseShops> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-HomeDataItem _$HomeDataItemFromJson(Map<String, dynamic> json) {
-  return _HomeDataItem.fromJson(json);
+HomeDataProduct _$HomeDataProductFromJson(Map<String, dynamic> json) {
+  return _HomeDataProduct.fromJson(json);
 }
 
 /// @nodoc
-mixin _$HomeDataItem {
+mixin _$HomeDataProduct {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -370,15 +466,15 @@ mixin _$HomeDataItem {
   double get rating => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeDataItemCopyWith<HomeDataItem> get copyWith =>
+  $HomeDataProductCopyWith<HomeDataProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeDataItemCopyWith<$Res> {
-  factory $HomeDataItemCopyWith(
-          HomeDataItem value, $Res Function(HomeDataItem) then) =
-      _$HomeDataItemCopyWithImpl<$Res, HomeDataItem>;
+abstract class $HomeDataProductCopyWith<$Res> {
+  factory $HomeDataProductCopyWith(
+          HomeDataProduct value, $Res Function(HomeDataProduct) then) =
+      _$HomeDataProductCopyWithImpl<$Res, HomeDataProduct>;
   @useResult
   $Res call(
       {int id,
@@ -390,9 +486,9 @@ abstract class $HomeDataItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeDataItemCopyWithImpl<$Res, $Val extends HomeDataItem>
-    implements $HomeDataItemCopyWith<$Res> {
-  _$HomeDataItemCopyWithImpl(this._value, this._then);
+class _$HomeDataProductCopyWithImpl<$Res, $Val extends HomeDataProduct>
+    implements $HomeDataProductCopyWith<$Res> {
+  _$HomeDataProductCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -439,11 +535,11 @@ class _$HomeDataItemCopyWithImpl<$Res, $Val extends HomeDataItem>
 }
 
 /// @nodoc
-abstract class _$$_HomeDataItemCopyWith<$Res>
-    implements $HomeDataItemCopyWith<$Res> {
-  factory _$$_HomeDataItemCopyWith(
-          _$_HomeDataItem value, $Res Function(_$_HomeDataItem) then) =
-      __$$_HomeDataItemCopyWithImpl<$Res>;
+abstract class _$$_HomeDataProductCopyWith<$Res>
+    implements $HomeDataProductCopyWith<$Res> {
+  factory _$$_HomeDataProductCopyWith(
+          _$_HomeDataProduct value, $Res Function(_$_HomeDataProduct) then) =
+      __$$_HomeDataProductCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -456,11 +552,11 @@ abstract class _$$_HomeDataItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HomeDataItemCopyWithImpl<$Res>
-    extends _$HomeDataItemCopyWithImpl<$Res, _$_HomeDataItem>
-    implements _$$_HomeDataItemCopyWith<$Res> {
-  __$$_HomeDataItemCopyWithImpl(
-      _$_HomeDataItem _value, $Res Function(_$_HomeDataItem) _then)
+class __$$_HomeDataProductCopyWithImpl<$Res>
+    extends _$HomeDataProductCopyWithImpl<$Res, _$_HomeDataProduct>
+    implements _$$_HomeDataProductCopyWith<$Res> {
+  __$$_HomeDataProductCopyWithImpl(
+      _$_HomeDataProduct _value, $Res Function(_$_HomeDataProduct) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -473,7 +569,7 @@ class __$$_HomeDataItemCopyWithImpl<$Res>
     Object? price = null,
     Object? rating = null,
   }) {
-    return _then(_$_HomeDataItem(
+    return _then(_$_HomeDataProduct(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -505,8 +601,8 @@ class __$$_HomeDataItemCopyWithImpl<$Res>
 /// @nodoc
 
 @jsonSerializableResponse
-class _$_HomeDataItem implements _HomeDataItem {
-  _$_HomeDataItem(
+class _$_HomeDataProduct implements _HomeDataProduct {
+  _$_HomeDataProduct(
       {required this.id,
       required this.name,
       required this.description,
@@ -514,8 +610,8 @@ class _$_HomeDataItem implements _HomeDataItem {
       required this.price,
       required this.rating});
 
-  factory _$_HomeDataItem.fromJson(Map<String, dynamic> json) =>
-      _$$_HomeDataItemFromJson(json);
+  factory _$_HomeDataProduct.fromJson(Map<String, dynamic> json) =>
+      _$$_HomeDataProductFromJson(json);
 
   @override
   final int id;
@@ -532,14 +628,14 @@ class _$_HomeDataItem implements _HomeDataItem {
 
   @override
   String toString() {
-    return 'HomeDataItem(id: $id, name: $name, description: $description, image: $image, price: $price, rating: $rating)';
+    return 'HomeDataProduct(id: $id, name: $name, description: $description, image: $image, price: $price, rating: $rating)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeDataItem &&
+            other is _$_HomeDataProduct &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -557,21 +653,21 @@ class _$_HomeDataItem implements _HomeDataItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeDataItemCopyWith<_$_HomeDataItem> get copyWith =>
-      __$$_HomeDataItemCopyWithImpl<_$_HomeDataItem>(this, _$identity);
+  _$$_HomeDataProductCopyWith<_$_HomeDataProduct> get copyWith =>
+      __$$_HomeDataProductCopyWithImpl<_$_HomeDataProduct>(this, _$identity);
 }
 
-abstract class _HomeDataItem implements HomeDataItem {
-  factory _HomeDataItem(
+abstract class _HomeDataProduct implements HomeDataProduct {
+  factory _HomeDataProduct(
       {required final int id,
       required final String name,
       required final String? description,
       required final String image,
       required final double price,
-      required final double rating}) = _$_HomeDataItem;
+      required final double rating}) = _$_HomeDataProduct;
 
-  factory _HomeDataItem.fromJson(Map<String, dynamic> json) =
-      _$_HomeDataItem.fromJson;
+  factory _HomeDataProduct.fromJson(Map<String, dynamic> json) =
+      _$_HomeDataProduct.fromJson;
 
   @override
   int get id;
@@ -587,6 +683,6 @@ abstract class _HomeDataItem implements HomeDataItem {
   double get rating;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeDataItemCopyWith<_$_HomeDataItem> get copyWith =>
+  _$$_HomeDataProductCopyWith<_$_HomeDataProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }

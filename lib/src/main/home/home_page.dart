@@ -19,6 +19,88 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    final homeData = ref.watch(getHomeDataProvider);
+
+    return homeData.when(
+      data: (data) {
+        return Scaffold(
+          body: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, index) {
+              final HomeDataResponse item = data[index];
+
+              return item.map(
+                items: (value) {
+                  return HomeProductsSection(value: value);
+                },
+                shops: (value) {
+                  return Container();
+                },
+              );
+            },
+          ),
+        );
+      },
+      error: (error, stackTrace) {
+        return Scaffold(
+          body: Center(
+            child: Text(context.l10n.defaultErrorMessage),
+          ),
+        );
+      },
+      loading: () {
+        return const Center(child: LoadingWidget());
+      },
+    );
+  }
+}
+
+class HomeProductsSection extends StatelessWidget {
+  const HomeProductsSection({super.key, required this.value});
+
+  final HomeDataResponseItems value;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 1.0,
+      ),
+      itemBuilder: (context, index) {
+        final HomeDataProduct item = value.items[index];
+
+        return HomeProductsSectionTile(item: item);
+      },
+    );
+  }
+}
+
+class HomeProductsSectionTile extends StatelessWidget {
+  const HomeProductsSectionTile({super.key, required this.item});
+
+  final HomeDataProduct item;
+
+  @override
+  Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(12);
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: borderRadius,
+          ),
+          child: ClipRRect(
+            borderRadius: borderRadius,
+            child: Image.network(item.image),
+          ),
+        ),
+        Text(
+          item.name,
+          maxLines: 2,
+        ),
+      ],
+    );
   }
 }

@@ -11,28 +11,32 @@ class HomeDataResponse with _$HomeDataResponse {
   @FreezedUnionValue("products")
   @jsonSerializableResponse
   const factory HomeDataResponse.items({
-    required List<HomeDataItem> items,
-  }) = _HomeDataResponseItems;
+    required String title,
+    required List<HomeDataProduct> items,
+  }) = HomeDataResponseItems;
 
   @jsonSerializableResponse
-  const factory HomeDataResponse.shops() = _HomeDataResponseShops;
+  const factory HomeDataResponse.shops({
+    required String title,
+    required List<String> items,
+  }) = HomeDataResponseShops;
 
   factory HomeDataResponse.fromJson(Map<String, dynamic> json) =>
       _$HomeDataResponseFromJson(json);
 }
 
 @freezedResponse
-class HomeDataItem with _$HomeDataItem {
+class HomeDataProduct with _$HomeDataProduct {
   @jsonSerializableResponse
-  factory HomeDataItem({
+  factory HomeDataProduct({
     required Id id,
     required String name,
     required String? description,
     required String image,
     required double price,
     required double rating,
-  }) = _HomeDataItem;
+  }) = _HomeDataProduct;
 
-  factory HomeDataItem.fromJson(Map<String, dynamic> json) =>
-      _$HomeDataItemFromJson(json);
+  factory HomeDataProduct.fromJson(Map<String, dynamic> json) =>
+      _$HomeDataProductFromJson(json);
 }

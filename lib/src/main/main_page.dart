@@ -37,8 +37,8 @@ class _MainPageState extends ConsumerState<MainPage> {
         final tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
-          body: FadeTransition(opacity: animation, child: child),
           appBar: AppBar(title: Text(context.l10n.appName)),
+          body: FadeTransition(opacity: animation, child: child),
           bottomNavigationBar: NavigationBar(
             onDestinationSelected: tabsRouter.setActiveIndex,
             selectedIndex: tabsRouter.activeIndex,

@@ -6,23 +6,26 @@ part of 'home_data_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_HomeDataResponseItems _$$_HomeDataResponseItemsFromJson(
+_$HomeDataResponseItems _$$HomeDataResponseItemsFromJson(
         Map<String, dynamic> json) =>
-    _$_HomeDataResponseItems(
+    _$HomeDataResponseItems(
+      title: json['title'] as String,
       items: (json['items'] as List<dynamic>)
-          .map((e) => HomeDataItem.fromJson(e as Map<String, dynamic>))
+          .map((e) => HomeDataProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['type'] as String?,
     );
 
-_$_HomeDataResponseShops _$$_HomeDataResponseShopsFromJson(
+_$HomeDataResponseShops _$$HomeDataResponseShopsFromJson(
         Map<String, dynamic> json) =>
-    _$_HomeDataResponseShops(
+    _$HomeDataResponseShops(
+      title: json['title'] as String,
+      items: (json['items'] as List<dynamic>).map((e) => e as String).toList(),
       $type: json['type'] as String?,
     );
 
-_$_HomeDataItem _$$_HomeDataItemFromJson(Map<String, dynamic> json) =>
-    _$_HomeDataItem(
+_$_HomeDataProduct _$$_HomeDataProductFromJson(Map<String, dynamic> json) =>
+    _$_HomeDataProduct(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String?,

@@ -14,18 +14,26 @@ class AppRouter extends _$AppRouter {
 
   AppRouter(this.ref);
 
+  List<AutoRouteGuard> get authenticatedGuards => [AuthenticatedGuard(ref)];
+  List<AutoRouteGuard> get notAuthenticatedGuards =>
+      [NotAuthenticatedGuard(ref)];
+
   @override
   List<AutoRoute> get routes {
     return [
-      AutoRoute(page: LoginRoute.page),
       AutoRoute(
+        path: '/login',
+        page: LoginRoute.page,
+        guards: notAuthenticatedGuards,
+      ),
+      AutoRoute(
+        initial: true,
         page: MainRoute.page,
+        guards: authenticatedGuards,
         children: [
           AutoRoute(
+            initial: true,
             page: HomeRoute.page,
-            guards: [
-              AuthenticatedGuard(ref),
-            ],
           ),
         ],
       ),

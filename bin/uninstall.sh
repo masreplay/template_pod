@@ -1,2 +1,2 @@
-xcrun simctl uninstall booted com.alrashed.mamnon
-adb uninstall com.mamnon.alrashed.mamnon
+xcrun simctl uninstall booted com.test.app
+adb uninstall com.test.app

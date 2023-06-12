@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/home_data_repository.dart';
 import 'package:starter/service/models/home_data_response.dart';

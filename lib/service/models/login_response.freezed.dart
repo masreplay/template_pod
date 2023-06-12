@@ -19,7 +19,9 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
 }
 
 /// @nodoc
-mixin _$LoginResponse {}
+mixin _$LoginResponse {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $LoginResponseCopyWith<$Res> {
@@ -57,7 +59,7 @@ class __$$_LoginResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-@jsonSerializableResponse
+@jsonSerializable
 class _$_LoginResponse extends _LoginResponse {
   const _$_LoginResponse() : super._();
 
@@ -78,6 +80,13 @@ class _$_LoginResponse extends _LoginResponse {
   @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LoginResponseToJson(
+      this,
+    );
+  }
 }
 
 abstract class _LoginResponse extends LoginResponse {

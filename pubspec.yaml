@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
   # model
   freezed_annotation: ^2.2.0
@@ -44,4 +47,5 @@ dev_dependencies:
   riverpod_generator: ^2.2.3
 
 flutter:
+  generate: true
   uses-material-design: true

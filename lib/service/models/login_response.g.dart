@@ -8,3 +8,6 @@ part of 'login_response.dart';
 
 _$_LoginResponse _$$_LoginResponseFromJson(Map<String, dynamic> json) =>
     _$_LoginResponse();
+
+Map<String, dynamic> _$$_LoginResponseToJson(_$_LoginResponse instance) =>
+    <String, dynamic>{};

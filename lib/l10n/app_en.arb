@@ -1,0 +1,9 @@
+{
+  "appName": "",
+  "username": "name: {username}",
+  "@username": {
+    "placeholders": {
+      "username": {}
+    }
+  }
+}

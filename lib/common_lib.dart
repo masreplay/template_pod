@@ -4,3 +4,4 @@ export 'package:hooks_riverpod/hooks_riverpod.dart';
 export 'package:riverpod_annotation/riverpod_annotation.dart';
 
 export 'package:auto_route/auto_route.dart';
+export 'package:starter/l10n/l10n.dart';

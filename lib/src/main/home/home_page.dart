@@ -64,8 +64,11 @@ class HomeProductsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
+      itemCount: value.items.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
+        crossAxisSpacing: Insets.medium,
+        mainAxisSpacing: Insets.medium,
         childAspectRatio: 1.0,
       ),
       itemBuilder: (context, index) {
@@ -84,16 +87,24 @@ class HomeProductsSectionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = BorderRadius.circular(12);
-    return Column(
+    final borderRadius = BorderRadius.circular(1000);
+    return ColumnPadded(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: borderRadius,
-          ),
-          child: ClipRRect(
-            borderRadius: borderRadius,
-            child: Image.network(item.image),
+        Expanded(
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: borderRadius,
+              ),
+              child: ClipRRect(
+                borderRadius: borderRadius,
+                child: Image.network(
+                  item.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ),
         ),
         Text(

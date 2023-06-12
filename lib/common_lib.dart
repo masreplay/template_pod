@@ -9,3 +9,4 @@ export 'package:starter/validator/validator.dart';
 export 'package:starter/widgets/widgets.dart';
 export 'package:flutter_hooks/flutter_hooks.dart';
 export 'package:starter/gen/assets.gen.dart';
+export 'package:starter/theme/theme.dart';

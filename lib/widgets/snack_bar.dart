@@ -1,5 +1,4 @@
 import 'package:starter/common_lib.dart';
-import 'package:starter/theme/theme.dart';
 
 extension SnackBarX on BuildContext {
   void showSnackBar(String text) {

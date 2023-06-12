@@ -4,7 +4,6 @@ import 'package:starter/data/shared_preferences/authentication_provider.dart';
 import 'package:starter/riverpod/riverpod.dart';
 import 'package:starter/router/router.dart';
 import 'package:starter/service/clients/_clients.dart';
-import 'package:starter/widgets/logo.dart';
 
 part 'login_page.g.dart';
 
@@ -53,6 +52,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           TextFormField(
             controller: phoneNumber,
             validator: context.validator.required().build(),
+            keyboardType: TextInputType.phone,
+            textInputAction: TextInputAction.next,
             decoration: InputDecoration(
               label: Text(context.l10n.phoneNumber),
             ),
@@ -61,6 +62,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             controller: password,
             validator: context.validator.required().build(),
             obscureText: passwordObscure.value,
+            textInputAction: TextInputAction.done,
+            keyboardType: TextInputType.visiblePassword,
             decoration: InputDecoration(
               label: Text(context.l10n.password),
               suffixIcon: IconButton(

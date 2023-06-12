@@ -5,6 +5,12 @@ const freezedResponse = Freezed(
   fromJson: true,
 );
 
+const freezedResponseGeneric = Freezed(
+  toJson: false,
+  fromJson: true,
+  genericArgumentFactories: true,
+);
+
 const freezedUnionResponse = Freezed(
   toJson: false,
   fromJson: true,

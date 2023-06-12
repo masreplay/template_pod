@@ -1,4 +1,6 @@
 [
-    "lib/client/models",
-    "lib/client/services"
+    "lib/service/models",
+    "lib/service/clients",
+    "lib/service/annotations",
+    "lib/service"
 ]

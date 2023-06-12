@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starter/client/annotations/annotations.dart';
+import 'package:starter/service/annotations/annotations.dart';
 
 import 'id.dart';
 

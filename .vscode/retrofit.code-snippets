@@ -58,12 +58,13 @@
     "scope": "dart",
     "prefix": "clientRetrofit",
     "body": [
-      "part '$1_client.freezed.dart';",
-      "part '$1_client.g.dart';",
+      "import '_clients.dart';",
+      "",
+      "part \"$TM_FILENAME_BASE.g.dart\";",
       "",
       "@RestApi()",
-      "abstract class $2Client {",
-      "  factory $2Client(Dio dio, {String baseUrl}) = _$2Client;",
+      "abstract class ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/upcase}/g} {",
+      "  factory ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/upcase}/g}(Dio dio, {String baseUrl}) = _${TM_FILENAME_BASE/(_|^)(\\w)/${2:/upcase}/g};",
       "}"
     ]
   }

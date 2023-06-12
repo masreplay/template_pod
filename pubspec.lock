@@ -169,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: dfda195cbf351d538054297bbd509d8046d336194ea218655f2c326c65711d1e
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.1"
   fake_async:
     dependency: transitive
     description:
@@ -307,6 +315,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  logger:
+    dependency: "direct main"
+    description:
+      name: logger
+      sha256: "7ad7215c15420a102ec687bb320a7312afd449bac63bfb1c60d9787c27b9767f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   logging:
     dependency: transitive
     description:
@@ -387,6 +403,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
+  retrofit:
+    dependency: "direct main"
+    description:
+      name: retrofit
+      sha256: "5eedbd8f73697f190dabc88520e0bcf2d3b2d9b9ad5c837f1dbb3ee6172d7709"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
+  retrofit_generator:
+    dependency: "direct dev"
+    description:
+      name: retrofit_generator
+      sha256: "5289b5cfc73ba123e238b9d3348a143fcb7f9d93c821525868f8dc3bb497c499"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.0+1"
   shelf:
     dependency: transitive
     description:
@@ -488,6 +520,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      sha256: "0ea99cd2f9352b2586583ab2ce6489d1f95a5f6de6fb9492faaf97ae2060f0aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   typed_data:
     dependency: transitive
     description:

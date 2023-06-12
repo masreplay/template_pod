@@ -8,5 +8,6 @@
     "validatorRequired": "هذا الحقل مطلوب",
     "validatorUrl": "الرابط غير صحيح",
     "phoneNumber": "رقم الهاتف",
-    "password": "كلمة المرور"
+    "password": "كلمة المرور",
+    "loginSuccess": "تم تسجيل الدخول بنجاح"
 }

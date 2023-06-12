@@ -12,7 +12,7 @@ class Login extends _$Login with AsyncXProvider {
   Future<AsyncX<LoginResponse>> build() => AsyncX.idle();
 
   @useResult
-  run(LoginRequest data) =>
+  Future<AsyncValue<AsyncX<LoginResponse>>> run(LoginRequest data) =>
       handle(() => ref.read(authRepositoryProvider).login(data));
 }
 
@@ -34,6 +34,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final phoneNumber = useTextEditingController();
     final password = useTextEditingController();
 
+    final passwordObscure = useState(true);
+
     return Scaffold(
       body: FormBody(
         formKey: _formKey,
@@ -50,8 +52,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           TextFormField(
             controller: password,
             validator: context.validator.required().build(),
+            obscureText: passwordObscure.value,
             decoration: InputDecoration(
               label: Text(context.l10n.password),
+              suffixIcon: IconButton(
+                onPressed: () => passwordObscure.value = !passwordObscure.value,
+                icon: Icon(
+                  passwordObscure.value
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                ),
+              ),
             ),
           ),
           ElevatedButton(
@@ -69,7 +80,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
                     state.whenDataOrError(
                       data: (data) {
-                        context.showSuccessSnackBar("data");
+                        context.showSuccessSnackBar(context.l10n.loginSuccess);
                       },
                       error: (Object? error, StackTrace? stackTrace) {},
                     );

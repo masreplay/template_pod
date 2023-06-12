@@ -25,5 +25,6 @@
   "validatorRequired": "field is required",
   "validatorUrl": "The field is not a valid URL address",
   "phoneNumber": "Phone number",
-  "password": "password"
+  "password": "password",
+  "loginSuccess": "Login successful"
 }

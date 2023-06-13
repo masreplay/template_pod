@@ -4,27 +4,27 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:starter/common_lib.dart';
 
-class ImagePick extends StatelessWidget {
-  const ImagePick({
+class ImageFormField extends StatelessWidget {
+  const ImageFormField({
     super.key,
     required this.dimension,
-    required this.label,
+    required this.text,
     required this.image,
     required this.onChanged,
   });
 
-  ImagePick.notifier(
+  ImageFormField.notifier(
     ValueNotifier<CroppedFile?> notifier, {
     super.key,
     required this.dimension,
-    required this.label,
+    required this.text,
   })  : image = notifier.value,
         onChanged = notifier.update;
 
   final CroppedFile? image;
   final ValueChanged<CroppedFile> onChanged;
   final double dimension;
-  final Text label;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -33,30 +33,54 @@ class ImagePick extends StatelessWidget {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       child: image == null
-          ? InkWell(
-              onTap: () {
-                cropImage(context).then((value) {
-                  if (value != null) onChanged(value);
-                });
+          ? FormField(
+              initialValue: image,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) {
+                if (value == null) return context.l10n.validatorRequired;
+                return null;
               },
-              child: ColumnPadded(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: dimension,
-                    height: dimension,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: theme.colorScheme.outline),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.add_a_photo,
-                      color: theme.colorScheme.primary,
-                    ),
+              builder: (field) {
+                return InkWell(
+                  onTap: () {
+                    cropImage(context).then((value) {
+                      if (value != null) onChanged(value);
+                    });
+                  },
+                  child: ColumnPadded(
+                    gap: 4,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: dimension,
+                        height: dimension,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: theme.colorScheme.outline),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.add_a_photo,
+                          color: theme.colorScheme.primary,
+                        ),
+                      ),
+                      Text(
+                        text,
+                        style: theme.textTheme.titleLarge,
+                      ),
+                      if (field.hasError)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            field.errorText!,
+                            style: theme.textTheme.bodySmall!.copyWith(
+                              color: theme.colorScheme.error,
+                            ),
+                          ),
+                        )
+                    ],
                   ),
-                  label,
-                ],
-              ),
+                );
+              },
             )
           : InkWell(
               onTap: () {
@@ -81,7 +105,10 @@ class ImagePick extends StatelessWidget {
                       ),
                     ),
                   ),
-                  label,
+                  Text(
+                    text,
+                    style: theme.textTheme.titleLarge,
+                  ),
                 ],
               ),
             ),

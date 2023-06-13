@@ -20,6 +20,9 @@ class AuthRepositoryMock implements AuthRepository {
   @override
   Future<SignUpResponse> signUp(SignUpRequest data) => Future.delayed(
         const Duration(seconds: 2),
-        () => const SignUpResponse(token: "random"),
+        () => const SignUpResponse(
+          token: "random",
+          refreshToken: "random",
+        ),
       );
 }

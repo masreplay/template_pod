@@ -21,6 +21,7 @@ SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SignUpResponse {
   String get token => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpResponseCopyWith<SignUpResponse> get copyWith =>
@@ -33,7 +34,7 @@ abstract class $SignUpResponseCopyWith<$Res> {
           SignUpResponse value, $Res Function(SignUpResponse) then) =
       _$SignUpResponseCopyWithImpl<$Res, SignUpResponse>;
   @useResult
-  $Res call({String token});
+  $Res call({String token, String refreshToken});
 }
 
 /// @nodoc
@@ -50,11 +51,16 @@ class _$SignUpResponseCopyWithImpl<$Res, $Val extends SignUpResponse>
   @override
   $Res call({
     Object? token = null,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -68,7 +74,7 @@ abstract class _$$_SignUpResponseCopyWith<$Res>
       __$$_SignUpResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String token});
+  $Res call({String token, String refreshToken});
 }
 
 /// @nodoc
@@ -83,11 +89,16 @@ class __$$_SignUpResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? token = null,
+    Object? refreshToken = null,
   }) {
     return _then(_$_SignUpResponse(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -97,17 +108,20 @@ class __$$_SignUpResponseCopyWithImpl<$Res>
 
 @jsonSerializableResponse
 class _$_SignUpResponse extends _SignUpResponse {
-  const _$_SignUpResponse({required this.token}) : super._();
+  const _$_SignUpResponse({required this.token, required this.refreshToken})
+      : super._();
 
   factory _$_SignUpResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SignUpResponseFromJson(json);
 
   @override
   final String token;
+  @override
+  final String refreshToken;
 
   @override
   String toString() {
-    return 'SignUpResponse(token: $token)';
+    return 'SignUpResponse(token: $token, refreshToken: $refreshToken)';
   }
 
   @override
@@ -115,12 +129,14 @@ class _$_SignUpResponse extends _SignUpResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignUpResponse &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, token);
+  int get hashCode => Object.hash(runtimeType, token, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -130,8 +146,9 @@ class _$_SignUpResponse extends _SignUpResponse {
 }
 
 abstract class _SignUpResponse extends SignUpResponse {
-  const factory _SignUpResponse({required final String token}) =
-      _$_SignUpResponse;
+  const factory _SignUpResponse(
+      {required final String token,
+      required final String refreshToken}) = _$_SignUpResponse;
   const _SignUpResponse._() : super._();
 
   factory _SignUpResponse.fromJson(Map<String, dynamic> json) =
@@ -139,6 +156,8 @@ abstract class _SignUpResponse extends SignUpResponse {
 
   @override
   String get token;
+  @override
+  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpResponseCopyWith<_$_SignUpResponse> get copyWith =>

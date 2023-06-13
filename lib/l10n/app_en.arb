@@ -35,5 +35,6 @@
   "logout": "Logout",
   "signUp": "Sign Up",
   "confirmPassword": "Confirm Password",
-  "crop": "Crop"
+  "crop": "Crop",
+  "signUpSuccess": "Sign Up successful"
 }

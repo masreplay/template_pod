@@ -9,4 +9,5 @@ part of 'sign_up_response.dart';
 _$_SignUpResponse _$$_SignUpResponseFromJson(Map<String, dynamic> json) =>
     _$_SignUpResponse(
       token: json['token'] as String,
+      refreshToken: json['refresh_token'] as String,
     );

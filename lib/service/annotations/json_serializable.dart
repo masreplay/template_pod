@@ -31,4 +31,5 @@ const jsonSerializableRequest = JsonSerializable(
 const jsonSerializableResponseGeneric = Freezed(
   toJson: false,
   fromJson: true,
+  genericArgumentFactories: true,
 );

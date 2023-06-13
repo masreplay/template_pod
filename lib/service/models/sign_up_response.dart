@@ -10,6 +10,7 @@ class SignUpResponse with _$SignUpResponse {
   @jsonSerializableResponse
   const factory SignUpResponse({
     required String token,
+    required String refreshToken,
   }) = _SignUpResponse;
 
   factory SignUpResponse.fromJson(Map<String, dynamic> json) =>

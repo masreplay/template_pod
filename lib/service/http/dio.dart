@@ -15,7 +15,7 @@ Dio dio(DioRef ref) {
   dio.interceptors.addAll(
     [
       LogInterceptor(),
-      Authenticator(),
+      Authenticator(ref),
     ],
   );
 

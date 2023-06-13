@@ -32,6 +32,18 @@ mixin AsyncXProvider<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
       return state = AsyncValue<AsyncX<T>>.error(error, stackTrace);
     }
   }
+
+  @useResult
+  Future<AsyncValue<AsyncX<T>>> handleX(
+      Future<AsyncValue<AsyncX<T>>> Function() callback) async {
+    state = AsyncValue<AsyncX<T>>.loading();
+    try {
+      return state = await callback();
+    } catch (error, stackTrace) {
+      if (kDebugMode) log(toString(), error: error, stackTrace: stackTrace);
+      return state = AsyncValue<AsyncX<T>>.error(error, stackTrace);
+    }
+  }
 }
 
 extension AsyncValueExtension<T> on AsyncValue<AsyncX<T>> {

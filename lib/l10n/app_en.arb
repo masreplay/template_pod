@@ -1,5 +1,5 @@
 {
-  "appName": "",
+  "appName": "Application",
   "username": "name: {username}",
   "home": "home",
   "login": "login",
@@ -31,5 +31,6 @@
   "more": "more",
   "seeAll": "see all",
   "retry": "Retry",
-  "noItemsFoundError": "No items found"
+  "noItemsFoundError": "No items found",
+  "logout": "Logout"
 }

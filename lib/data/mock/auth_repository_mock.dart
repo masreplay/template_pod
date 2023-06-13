@@ -10,4 +10,9 @@ class AuthRepositoryMock implements AuthRepository {
       refreshToken: "random",
     );
   }
+
+  @override
+  Future<dynamic> logout() {
+    return Future.delayed(const Duration(seconds: 2));
+  }
 }

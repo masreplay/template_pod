@@ -1,5 +1,5 @@
 {
-    "appName": "",
+    "appName": "تطبيق",
     "username": "الاسم: {username}",
     "validatorMinLength": "رجاءً أدخل {n} أحرف على الأقل",
     "validatorMaxLength": "رجاءً أدخل {n} أحرف على الأكثر",
@@ -9,5 +9,13 @@
     "validatorUrl": "الرابط غير صحيح",
     "phoneNumber": "رقم الهاتف",
     "password": "كلمة المرور",
-    "loginSuccess": "تم تسجيل الدخول بنجاح"
+    "loginSuccess": "تم تسجيل الدخول بنجاح",
+    "home": "الرئيسية",
+    "login": "تسجيل الدخول",
+    "defaultErrorMessage": "حدث خطأ ما, يرجى المحاولة مرة أخرى",
+    "more": "المزيد",
+    "seeAll": "عرض الكل",
+    "retry": "إعادة المحاولة",
+    "noItemsFoundError": "لا يوجد عناصر",
+    "logout": "تسجيل الخروج"
 }

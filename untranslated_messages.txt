@@ -1,11 +1,1 @@
-{
-  "ar": [
-    "home",
-    "login",
-    "defaultErrorMessage",
-    "more",
-    "seeAll",
-    "retry",
-    "noItemsFoundError"
-  ]
-}
+{}

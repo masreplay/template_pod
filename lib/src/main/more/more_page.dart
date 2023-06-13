@@ -1,4 +1,5 @@
 import 'package:starter/common_lib.dart';
+import 'package:starter/src/main/more/logout_provider.dart';
 
 @RoutePage()
 class MorePage extends ConsumerStatefulWidget {
@@ -11,6 +12,20 @@ class MorePage extends ConsumerStatefulWidget {
 class _MorePageState extends ConsumerState<MorePage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text(context.l10n.logout),
+            onTap: () {
+              logout(ref: ref);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
+
+
+

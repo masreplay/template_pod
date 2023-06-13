@@ -44,8 +44,6 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
   Widget build(BuildContext context) {
     final product = ref.watch(getProductProvider(id: widget.id));
 
-    final theme = Theme.of(context);
-
     return Scaffold(
       body: product.when(
         data: (product) {

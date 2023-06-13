@@ -1,5 +1,7 @@
 import 'package:starter/common_lib.dart';
 
+import 'cart_icon.dart';
+
 @RoutePage()
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -36,7 +38,12 @@ class _MainPageState extends ConsumerState<MainPage> {
         final tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
-          appBar: AppBar(title: Text(context.l10n.appName)),
+          appBar: AppBar(
+            title: const Slogan(),
+            actions: const [
+              CartIcon(),
+            ],
+          ),
           body: FadeTransition(opacity: animation, child: child),
           bottomNavigationBar: NavigationBar(
             onDestinationSelected: tabsRouter.setActiveIndex,

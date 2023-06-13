@@ -4,6 +4,8 @@ import 'package:starter/data/repositories/_repositories.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
 import 'package:starter/riverpod/riverpod.dart';
 
+import '../../../widgets/password_text_input.dart';
+
 part 'sign_up_page.g.dart';
 
 @riverpod
@@ -24,8 +26,32 @@ class SignUpPage extends StatefulHookConsumerWidget {
 }
 
 class _SignUpPageState extends ConsumerState<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final username = useTextEditingController();
+    final email = useTextEditingController();
+    final password = useTextEditingController();
+    final confirmPassword = useTextEditingController();
+    final passwordObscure = useState(true);
+
+    return Scaffold(
+      appBar: AppBar(title: Text(context.l10n.signUp)),
+      body: FormBody(
+        formKey: _formKey,
+        children: [
+          PasswordTextInput(
+            controller: password,
+            passwordObscure: passwordObscure,
+          ),
+          PasswordTextInput(
+            label: Text(context.l10n.confirmPassword),
+            controller: password,
+            passwordObscure: passwordObscure,
+          ),
+        ],
+      ),
+    );
   }
 }

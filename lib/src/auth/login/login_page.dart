@@ -3,6 +3,7 @@ import 'package:starter/data/repositories/auth_repository.dart';
 import 'package:starter/data/shared_preferences/authentication_provider.dart';
 import 'package:starter/riverpod/riverpod.dart';
 import 'package:starter/service/clients/_clients.dart';
+import 'package:starter/widgets/password_text_input.dart';
 
 part 'login_page.g.dart';
 
@@ -57,23 +58,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               label: Text(context.l10n.phoneNumber),
             ),
           ),
-          TextFormField(
+          PasswordTextInput(
             controller: password,
-            validator: context.validator.required().build(),
-            obscureText: passwordObscure.value,
-            textInputAction: TextInputAction.done,
-            keyboardType: TextInputType.visiblePassword,
-            decoration: InputDecoration(
-              label: Text(context.l10n.password),
-              suffixIcon: IconButton(
-                onPressed: () => passwordObscure.value = !passwordObscure.value,
-                icon: Icon(
-                  passwordObscure.value
-                      ? Icons.visibility_off
-                      : Icons.visibility,
-                ),
-              ),
-            ),
+            passwordObscure: passwordObscure,
           ),
           FilledButton(
             onPressed: login.isLoading

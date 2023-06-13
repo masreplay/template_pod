@@ -1,8 +1,5 @@
 import 'dart:io';
 
-import 'package:starter/data/repositories/_repositories.dart';
-import 'package:starter/service/clients/_clients.dart';
-
 import '_models.dart';
 
 part 'sign_up_request.freezed.dart';
@@ -18,4 +15,8 @@ class SignUpRequest with _$SignUpRequest {
     required String password,
     required String email,
   }) = _SignUpRequest;
+
+  @override
+  // ignore: unnecessary_overrides
+  Map<String, dynamic> toJson() => super.toJson();
 }

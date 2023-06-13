@@ -10,3 +10,4 @@ export 'package:starter/router/router.dart';
 export 'package:starter/theme/theme.dart';
 export 'package:starter/validator/validator.dart';
 export 'package:starter/widgets/widgets.dart';
+export 'value_notifier.dart';

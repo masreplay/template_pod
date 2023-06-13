@@ -9,13 +9,13 @@
     }
   },
   "validatorMinLength": "The field must be at least {n} characters long",
-  "@validatorMinLength":{
+  "@validatorMinLength": {
     "placeholders": {
       "n": {}
     }
   },
   "validatorMaxLength": "The field must be at most {n} characters long",
-  "@validatorMaxLength":{
+  "@validatorMaxLength": {
     "placeholders": {
       "n": {}
     }
@@ -32,5 +32,7 @@
   "seeAll": "see all",
   "retry": "Retry",
   "noItemsFoundError": "No items found",
-  "logout": "Logout"
+  "logout": "Logout",
+  "signUp": "Sign Up",
+  "confirmPassword": "Confirm Password"
 }

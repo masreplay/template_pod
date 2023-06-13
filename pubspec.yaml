@@ -43,7 +43,12 @@ dependencies:
   # pagination
   infinite_scroll_pagination: ^3.2.0
 
+  # link
   url_launcher: ^6.1.11
+
+  # image
+  image_picker: ^0.8.8
+  image_cropper: ^5.0.0
 
 dev_dependencies:
   flutter_test:

@@ -6,7 +6,7 @@ part 'pagination.g.dart';
 @freezedResponseGeneric
 class Pagination<T> with _$Pagination<T> {
   const Pagination._();
-
+  
   @jsonSerializableResponseGeneric
   const factory Pagination({
     required int total,

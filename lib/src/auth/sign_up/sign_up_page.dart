@@ -57,6 +57,10 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
             controller: confirmPassword,
             passwordObscure: passwordObscure,
           ),
+          FilledButton(
+            onPressed: () {},
+            child: Text(context.l10n.signUp),
+          )
         ],
       ),
     );

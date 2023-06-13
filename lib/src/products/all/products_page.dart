@@ -1,9 +1,12 @@
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:starter/common_lib.dart';
-import 'package:starter/data/repositories/_repositories.dart';
+
 import 'package:starter/data/repositories/products_repository.dart';
 import 'package:starter/paging/pagination_controller.dart';
 import 'package:starter/paging/paging_list_delegate.dart';
+import 'package:starter/service/clients/products_client.dart';
+
+import '../../../service/models/models.dart';
 
 part 'products_page.g.dart';
 

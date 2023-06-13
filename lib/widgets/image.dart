@@ -58,25 +58,32 @@ class ImagePick extends StatelessWidget {
                 ],
               ),
             )
-          : Column(
-              children: [
-                Container(
-                  width: dimension,
-                  height: dimension,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: theme.colorScheme.outline),
-                    shape: BoxShape.circle,
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(dimension),
-                    child: Image.file(
-                      File(image!.path),
-                      fit: BoxFit.cover,
+          : InkWell(
+              onTap: () {
+                cropImage(context).then((value) {
+                  if (value != null) onChanged(value);
+                });
+              },
+              child: Column(
+                children: [
+                  Container(
+                    width: dimension,
+                    height: dimension,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: theme.colorScheme.outline),
+                      shape: BoxShape.circle,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(dimension),
+                      child: Image.file(
+                        File(image!.path),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                label,
-              ],
+                  label,
+                ],
+              ),
             ),
     );
   }
@@ -103,11 +110,13 @@ Future<CroppedFile?> cropImage(BuildContext context) async {
         cropGridColor: theme.colorScheme.outline,
         backgroundColor: theme.colorScheme.background,
         activeControlsWidgetColor: theme.colorScheme.primary,
-        toolbarWidgetColor: Colors.white,
+        toolbarWidgetColor: theme.colorScheme.onPrimary,
         initAspectRatio: CropAspectRatioPreset.original,
         lockAspectRatio: false,
       ),
-      IOSUiSettings()
+      IOSUiSettings(
+        title: context.l10n.crop,
+      )
     ],
   );
 }

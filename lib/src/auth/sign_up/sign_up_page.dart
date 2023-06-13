@@ -1,13 +1,9 @@
-import 'dart:io';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/_repositories.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
 import 'package:starter/riverpod/riverpod.dart';
-
-import '../../../widgets/password_text_input.dart';
 
 part 'sign_up_page.g.dart';
 
@@ -47,6 +43,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
         formKey: _formKey,
         children: [
           const Logo(),
+          ImagePick.notifier(image),
           PasswordTextInput(
             controller: password,
             passwordObscure: passwordObscure,

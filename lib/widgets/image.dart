@@ -1,46 +1,44 @@
-import 'dart:io';
-
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:starter/common_lib.dart';
 
-class ImageProfile extends StatelessWidget {
-  const ImageProfile({Key? key, required this.image}) : super(key: key);
+class ImagePick extends StatelessWidget {
+  const ImagePick({
+    super.key,
+    required this.image,
+    required this.onChanged,
+  });
+
+  ImagePick.notifier(ValueNotifier<CroppedFile?> notifier, {super.key})
+      : image = notifier.value,
+        onChanged = notifier.update;
 
   final CroppedFile? image;
+  final ValueChanged<CroppedFile> onChanged;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SizedBox(
-      width: 100,
-      height: 100,
-      child: Stack(
-        children: [
-          if (image != null)
-            ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.file(
-                File(image!.path),
-                fit: BoxFit.cover,
-                width: 100,
-                height: 100,
-              ),
-            ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: SizedBox(
-              width: 30,
-              height: 30,
-              child: FloatingActionButton(
-                onPressed: () async {},
-                backgroundColor: theme.primaryColor,
-                child: const Icon(Icons.edit),
-              ),
-            ),
-          ),
-        ],
+
+    return InkWell(
+      onTap: () {
+        cropImage(context).then((value) {
+          if (value != null) {
+            onChanged(value);
+          }
+        });
+      },
+      child: Container(
+        width: 100,
+        height: 100,
+        decoration: BoxDecoration(
+          border: Border.all(color: theme.colorScheme.outline),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.add_a_photo,
+          color: theme.colorScheme.primary,
+        ),
       ),
     );
   }

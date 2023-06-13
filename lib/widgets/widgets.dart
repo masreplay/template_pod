@@ -1,7 +1,9 @@
 export './form_body.dart';
+export './image.dart';
 export './snack_bar.dart';
 export './flex_padded.dart';
 export './logo.dart';
+export './password_text_input.dart';
 export './default_error_widget.dart';
 export './password_obscure_icon.dart';
 export './loading.dart';

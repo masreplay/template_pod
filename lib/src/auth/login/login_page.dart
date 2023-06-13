@@ -3,7 +3,6 @@ import 'package:starter/data/repositories/auth_repository.dart';
 import 'package:starter/data/shared_preferences/authentication_provider.dart';
 import 'package:starter/riverpod/riverpod.dart';
 import 'package:starter/service/clients/_clients.dart';
-import 'package:starter/widgets/password_text_input.dart';
 
 part 'login_page.g.dart';
 
@@ -96,7 +95,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           ),
           TextButton(
             onPressed: () {
-              
+              context.router.push(const SignUpRoute());
             },
             child: Text.rich(
               TextSpan(

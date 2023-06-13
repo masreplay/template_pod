@@ -27,6 +27,7 @@
       "import '_models.dart';",
       "",
       "part '$TM_FILENAME_BASE.freezed.dart';",
+      "part '$TM_FILENAME_BASE.g.dart';",
       "",
       "@freezedRequest",
       "class ${1} with _$${1}{",

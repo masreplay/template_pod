@@ -1,7 +1,6 @@
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/products_repository.dart';
 import 'package:starter/service/service.dart';
-import 'package:starter/widgets/default_error_widget.dart';
 
 part 'product_page.g.dart';
 

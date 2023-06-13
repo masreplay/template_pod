@@ -40,6 +40,9 @@ dependencies:
   gap: ^2.0.1
   google_fonts: ^5.0.0
 
+  # pagination
+  infinite_scroll_pagination: ^3.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

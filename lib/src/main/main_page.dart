@@ -1,5 +1,4 @@
 import 'package:starter/common_lib.dart';
-import 'package:starter/router/router.dart';
 
 @RoutePage()
 class MainPage extends ConsumerStatefulWidget {

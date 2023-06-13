@@ -62,20 +62,43 @@ class HomeProductsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      itemCount: value.items.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: Insets.medium,
-        mainAxisSpacing: Insets.medium,
-        childAspectRatio: 1.0,
-      ),
-      itemBuilder: (context, index) {
-        final HomeDataProduct item = value.items[index];
+    return ColumnPadded(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Insets.large),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                value.title,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              TextButton(
+                onPressed: () {
+                  context.router.push(const ProductsRoute());
+                },
+                child: Text(context.l10n.seeAll),
+              ),
+            ],
+          ),
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          itemCount: value.items.length,
+          padding: EdgeInsets.zero,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: Insets.medium,
+            mainAxisSpacing: Insets.medium,
+            childAspectRatio: 1.0,
+          ),
+          itemBuilder: (context, index) {
+            final HomeDataProduct item = value.items[index];
 
-        return HomeProductsSectionTile(item: item);
-      },
+            return HomeProductsSectionTile(item: item);
+          },
+        ),
+      ],
     );
   }
 }
@@ -94,22 +117,18 @@ class HomeProductsSectionTile extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 1,
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: borderRadius,
-              ),
+              decoration: BoxDecoration(borderRadius: borderRadius),
               child: ClipRRect(
                 borderRadius: borderRadius,
-                child: Image.network(
-                  item.image,
-                  fit: BoxFit.cover,
-                ),
+                child: Image.network(item.image, fit: BoxFit.cover),
               ),
             ),
           ),
         ),
         Text(
           item.name,
-          maxLines: 2,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

@@ -69,3 +69,24 @@ class _ProductsClient implements ProductsClient {
     return requestOptions;
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$productsClientHash() => r'758face8c9ee0e1c4f64599c6bb9db6b87e0e70b';
+
+/// See also [productsClient].
+@ProviderFor(productsClient)
+final productsClientProvider = AutoDisposeProvider<ProductsClient>.internal(
+  productsClient,
+  name: r'productsClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$productsClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ProductsClientRef = AutoDisposeProviderRef<ProductsClient>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

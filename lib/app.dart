@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:starter/common_lib.dart';
-import 'package:starter/router/router.dart';
 
 import 'data/shared_preferences/settings_provider.dart';
 

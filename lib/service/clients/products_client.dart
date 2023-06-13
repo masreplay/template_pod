@@ -1,9 +1,10 @@
-import 'package:starter/service/models/_models.dart';
-
 import '_clients.dart';
 
-part 'products_client.freezed.dart';
-part 'products_client.g.dart';
+part "products_client.freezed.dart";
+part "products_client.g.dart";
+
+@riverpod
+ProductsClient productsClient(ProductsClientRef ref) => ProductsClient(ref.dio);
 
 @RestApi()
 abstract class ProductsClient {

@@ -3,6 +3,9 @@
     "home",
     "login",
     "defaultErrorMessage",
-    "more"
+    "more",
+    "seeAll",
+    "retry",
+    "noItemsFoundError"
   ]
 }

@@ -28,5 +28,8 @@
   "password": "password",
   "loginSuccess": "Login successful",
   "defaultErrorMessage": "An error occurred, please try again later",
-  "more": "more"
+  "more": "more",
+  "seeAll": "see all",
+  "retry": "Retry",
+  "noItemsFoundError": "No items found"
 }

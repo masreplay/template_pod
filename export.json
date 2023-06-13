@@ -8,5 +8,6 @@
     "lib/theme",
     "lib/data/shared_preferences",
     "lib/widgets",
-    "lib/validator"
+    "lib/validator",
+    "lib/paging"
 ]

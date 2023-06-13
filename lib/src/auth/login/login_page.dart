@@ -2,7 +2,6 @@ import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
 import 'package:starter/data/shared_preferences/authentication_provider.dart';
 import 'package:starter/riverpod/riverpod.dart';
-import 'package:starter/router/router.dart';
 import 'package:starter/service/clients/_clients.dart';
 
 part 'login_page.g.dart';

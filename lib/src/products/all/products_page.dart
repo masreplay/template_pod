@@ -59,6 +59,9 @@ class ProductListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        context.router.push(ProductDetailsRoute(id: item.id));
+      },
       title: Text(item.name),
       subtitle: Text(item.description),
     );

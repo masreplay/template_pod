@@ -12,4 +12,5 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       description: json['description'] as String,
       image: json['image'] as String,
       price: (json['price'] as num).toDouble(),
+      isFavorite: json['is_favorite'] as bool,
     );

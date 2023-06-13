@@ -13,4 +13,10 @@ class ProductsRepository {
 
   Future<Pagination<Product>> getAll(ProductsFilters filter) =>
       _client.getAll(filter).data;
+
+  Future<Product> get(Id id) => _client.getItem(id).data;
+
+  Future<Product> favorite(int id) => _client.favorite(id).data;
+
+  Future<Product> unfavorite(int id) => _client.unfavorite(id).data;
 }

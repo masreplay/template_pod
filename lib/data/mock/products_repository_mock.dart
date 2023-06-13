@@ -13,6 +13,7 @@ final List<Product> _products = List.generate(
       description: "Description $index",
       image: "https://picsum.photos/200/300?random=$index",
       price: Random().nextInt(1000).toDouble() * index,
+      isFavorite: Random().nextBool(),
     );
   },
 );
@@ -41,6 +42,36 @@ class ProductsRepositoryMock implements ProductsRepository {
     return Pagination(
       total: _products.length,
       items: products,
+    );
+  }
+
+  @override
+  Future<Product> get(Id id) {
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () => _products.firstWhere((element) => element.id == id),
+    );
+  }
+
+  @override
+  Future<Product> favorite(int id) {
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        final product = _products.firstWhere((element) => element.id == id);
+        return product.copyWith(isFavorite: !product.isFavorite);
+      },
+    );
+  }
+
+  @override
+  Future<Product> unfavorite(int id) {
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        final product = _products.firstWhere((element) => element.id == id);
+        return product.copyWith(isFavorite: !product.isFavorite);
+      },
     );
   }
 }

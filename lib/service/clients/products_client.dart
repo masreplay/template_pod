@@ -14,6 +14,15 @@ abstract class ProductsClient {
   Future<HttpResponse<Pagination<Product>>> getAll(
     @Queries() ProductsFilters filter,
   );
+
+  @GET("/products/{id}")
+  Future<HttpResponse<Product>> getItem(@Path("id") Id id);
+
+  @PATCH("/products/{id}/favorite")
+  Future<HttpResponse<Product>> favorite(@Path("id") int id);
+
+  @GET("/products/{id}/unfavorite")
+  Future<HttpResponse<Product>> unfavorite(@Path("id") int id);
 }
 
 @freezedRequest

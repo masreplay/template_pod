@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starter/src/auth/login/login_page.dart';
 import 'package:starter/src/main/home/home_page.dart';

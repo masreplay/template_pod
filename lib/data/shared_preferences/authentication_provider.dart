@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:starter/data/repositories/_repositories.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../service/service.dart';
 import 'object_preference_provider.dart';
 import 'preferences.dart';
 

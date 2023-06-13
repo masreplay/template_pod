@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:starter/data/repositories/_repositories.dart';
+
 import 'package:starter/service/clients/_clients.dart';
+import 'package:starter/service/interceptors/authenticator.dart';
 
 part 'dio.g.dart';
 

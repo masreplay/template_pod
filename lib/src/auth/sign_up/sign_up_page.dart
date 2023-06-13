@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/_repositories.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
@@ -30,26 +33,30 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    final username = useTextEditingController();
-    final email = useTextEditingController();
+    // final username = useTextEditingController();
+    // final email = useTextEditingController();
     final password = useTextEditingController();
     final confirmPassword = useTextEditingController();
     final passwordObscure = useState(true);
+    final image = useState<CroppedFile?>(null);
 
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.signUp)),
       body: FormBody(
         formKey: _formKey,
         children: [
+          Logo(),
           PasswordTextInput(
             controller: password,
             passwordObscure: passwordObscure,
           ),
           PasswordTextInput(
             label: Text(context.l10n.confirmPassword),
-            controller: password,
+            controller: confirmPassword,
             passwordObscure: passwordObscure,
           ),
+          if (image.value != null) Image.file(File(image.value!.path))
+          
         ],
       ),
     );

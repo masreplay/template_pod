@@ -43,6 +43,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     final passwordObscure = useState(true);
 
+    final theme = Theme.of(context);
     return Scaffold(
       body: FormBody(
         formKey: _formKey,
@@ -93,6 +94,22 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 ? const LoadingWidget()
                 : Text(context.l10n.login),
           ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  const TextSpan(text: "Don't have an account?"),
+                  TextSpan(
+                    text: "Sign up",
+                    style: TextStyle(
+                      color: theme.colorScheme.primary,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

@@ -15,8 +15,4 @@ class SignUpRequest with _$SignUpRequest {
     required String password,
     required String email,
   }) = _SignUpRequest;
-
-  @override
-  // ignore: unnecessary_overrides
-  Map<String, dynamic> toJson() => super.toJson();
 }

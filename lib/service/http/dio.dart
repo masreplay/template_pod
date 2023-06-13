@@ -1,3 +1,4 @@
+import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:starter/service/clients/_clients.dart';
@@ -15,7 +16,8 @@ Dio dio(DioRef ref) {
 
   dio.interceptors.addAll(
     [
-      LogInterceptor(),
+      // LogInterceptor(),
+      AwesomeDioInterceptor(),
       Authenticator(ref),
     ],
   );

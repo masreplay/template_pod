@@ -43,7 +43,11 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
         formKey: _formKey,
         children: [
           const Logo(),
-          ImagePick.notifier(image),
+          ImagePick.notifier(
+            image,
+            dimension: 100,
+            label: const Text("Profile picture"),
+          ),
           PasswordTextInput(
             controller: password,
             passwordObscure: passwordObscure,

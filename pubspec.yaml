@@ -21,6 +21,7 @@ dependencies:
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.2.1
   logger: any
+  awesome_dio_interceptor: ^1.0.0
 
   # state management
   hooks_riverpod: ^2.3.6

@@ -34,5 +34,6 @@
   "noItemsFoundError": "No items found",
   "logout": "Logout",
   "signUp": "Sign Up",
-  "confirmPassword": "Confirm Password"
+  "confirmPassword": "Confirm Password",
+  "crop": "Crop"
 }

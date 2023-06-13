@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    SignUpRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SignUpPage(),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -111,6 +117,20 @@ class ProductDetailsRouteArgs {
   String toString() {
     return 'ProductDetailsRouteArgs{key: $key, id: $id}';
   }
+}
+
+/// generated route for
+/// [SignUpPage]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute({List<PageRouteInfo>? children})
+      : super(
+          SignUpRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignUpRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

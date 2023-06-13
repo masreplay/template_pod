@@ -21,6 +21,7 @@ class SignUp extends _$SignUp with AsyncXProvider<SignUpResponse> {
       handle(() => ref.read(authRepositoryProvider).signUp(request));
 }
 
+@RoutePage()
 class SignUpPage extends StatefulHookConsumerWidget {
   const SignUpPage({super.key});
 
@@ -45,7 +46,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
       body: FormBody(
         formKey: _formKey,
         children: [
-          Logo(),
+          const Logo(),
           PasswordTextInput(
             controller: password,
             passwordObscure: passwordObscure,
@@ -55,8 +56,6 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
             controller: confirmPassword,
             passwordObscure: passwordObscure,
           ),
-          if (image.value != null) Image.file(File(image.value!.path))
-          
         ],
       ),
     );

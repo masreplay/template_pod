@@ -1,6 +1,7 @@
 {
   "ar": [
     "signUp",
-    "confirmPassword"
+    "confirmPassword",
+    "crop"
   ]
 }

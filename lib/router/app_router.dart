@@ -46,6 +46,11 @@ class AppRouter extends _$AppRouter {
         guards: notAuthenticatedGuards,
       ),
       AutoRoute(
+        path: '/signUp',
+        page: SignUpRoute.page,
+        guards: notAuthenticatedGuards,
+      ),
+      AutoRoute(
         path: '/products',
         page: ProductsRoute.page,
         guards: authenticatedGuards,

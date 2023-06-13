@@ -13,5 +13,8 @@ abstract class AuthClient {
   Future<HttpResponse<LoginResponse>> login(LoginRequest data);
 
   @POST("/logout")
-  Future<HttpResponse<dynamic>> logout();
+  Future<HttpResponse<LogoutResponse>> logout();
+
+  @POST("/sign_up")
+  Future<HttpResponse<SignUpResponse>> signUp(SignUpRequest data);
 }

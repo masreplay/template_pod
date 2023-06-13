@@ -9,7 +9,6 @@ Future<void> launchUrlOrDeepLink(
   BuildContext context, {
   required String url,
 }) async {
-  // TODO(masreplay): handle context.tabsRouter
   if (url.startsWith(baseurl)) {
     await context.router.pushNamed(url.substring(baseurl.length));
   } else {

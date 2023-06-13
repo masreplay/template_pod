@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'logout_provider.dart';
+part of 'sign_up_page.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$logoutHash() => r'0a9cda2056a087a4813092b68aef5793d706fb04';
+String _$signUpHash() => r'94471ba2576647e96742685fcafa437f0f1dbcd1';
 
-/// See also [Logout].
-@ProviderFor(Logout)
-final logoutProvider =
-    AutoDisposeAsyncNotifierProvider<Logout, AsyncX<LogoutResponse>>.internal(
-  Logout.new,
-  name: r'logoutProvider',
+/// See also [SignUp].
+@ProviderFor(SignUp)
+final signUpProvider =
+    AutoDisposeAsyncNotifierProvider<SignUp, AsyncX<SignUpResponse>>.internal(
+  SignUp.new,
+  name: r'signUpProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$logoutHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$signUpHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Logout = AutoDisposeAsyncNotifier<AsyncX<LogoutResponse>>;
+typedef _$SignUp = AutoDisposeAsyncNotifier<AsyncX<SignUpResponse>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -3,16 +3,23 @@ import 'package:starter/service/service.dart';
 
 class AuthRepositoryMock implements AuthRepository {
   @override
-  Future<LoginResponse> login(LoginRequest data) async {
-    await Future.delayed(const Duration(seconds: 2));
-    return const LoginResponse(
-      token: "random",
-      refreshToken: "random",
-    );
-  }
+  Future<LoginResponse> login(LoginRequest data) => Future.delayed(
+        const Duration(seconds: 2),
+        () => const LoginResponse(
+          token: "random",
+          refreshToken: "random",
+        ),
+      );
 
   @override
-  Future<dynamic> logout() {
-    return Future.delayed(const Duration(seconds: 2));
-  }
+  Future<LogoutResponse> logout() => Future.delayed(
+        const Duration(seconds: 2),
+        () => const LogoutResponse(),
+      );
+
+  @override
+  Future<SignUpResponse> signUp(SignUpRequest data) => Future.delayed(
+        const Duration(seconds: 2),
+        () => const SignUpResponse(token: "random"),
+      );
 }

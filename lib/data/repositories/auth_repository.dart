@@ -13,5 +13,8 @@ class AuthRepository {
 
   Future<LoginResponse> login(LoginRequest data) => _client.login(data).data;
 
-  Future<dynamic> logout() => _client.logout().data;
+  Future<LogoutResponse> logout() => _client.logout().data;
+
+  Future<SignUpResponse> signUp(SignUpRequest data) =>
+      _client.signUp(data).data;
 }

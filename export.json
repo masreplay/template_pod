@@ -2,6 +2,7 @@
     "lib/service/models",
     "lib/service/clients",
     "lib/service/annotations",
+    "lib/service/converters",
     "lib/service/interceptors",
     "lib/router",
     "lib/service",

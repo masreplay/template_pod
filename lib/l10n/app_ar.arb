@@ -17,5 +17,6 @@
     "seeAll": "عرض الكل",
     "retry": "إعادة المحاولة",
     "noItemsFoundError": "لا يوجد عناصر",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "pressBackAgainToExit": "اضغط مرة أخرى للخروج"
 }

@@ -36,5 +36,6 @@
   "signUp": "Sign Up",
   "confirmPassword": "Confirm Password",
   "crop": "Crop",
+  "pressBackAgainToExit": "Press back again to exit",
   "signUpSuccess": "Sign Up successful"
 }

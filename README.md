@@ -1,5 +1,3 @@
 # starter
 
-model,
-riverpod,
-ui
+<!-- TODO: add assets -->

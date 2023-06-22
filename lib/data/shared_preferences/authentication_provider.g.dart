@@ -6,20 +6,21 @@ part of 'authentication_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authenticationHash() => r'be1d596eef6ba4de341e9cb08bdba52874cf6ade';
+String _$authenticationPreferenceHash() =>
+    r'1229cf20af81dfa4525f9569bda25200c258fff4';
 
-/// See also [Authentication].
-@ProviderFor(Authentication)
-final authenticationProvider =
-    AutoDisposeNotifierProvider<Authentication, LoginResponse?>.internal(
-  Authentication.new,
-  name: r'authenticationProvider',
+/// See also [AuthenticationPreference].
+@ProviderFor(AuthenticationPreference)
+final authenticationPreferenceProvider = AutoDisposeNotifierProvider<
+    AuthenticationPreference, LoginResponse?>.internal(
+  AuthenticationPreference.new,
+  name: r'authenticationPreferenceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$authenticationHash,
+      : _$authenticationPreferenceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Authentication = AutoDisposeNotifier<LoginResponse?>;
+typedef _$AuthenticationPreference = AutoDisposeNotifier<LoginResponse?>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

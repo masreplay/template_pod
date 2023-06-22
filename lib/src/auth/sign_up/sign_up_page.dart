@@ -2,22 +2,22 @@ import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:riverpod_state/riverpod_state.dart';
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/_repositories.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
 import 'package:starter/data/shared_preferences/shared_preferences.dart';
-import 'package:starter/riverpod/riverpod.dart';
 
 part 'sign_up_page.g.dart';
 
 @riverpod
-class SignUp extends _$SignUp with AsyncXProvider<SignUpResponse> {
+class SignUp extends _$SignUp with AsyncXNotifierMixin<SignUpResponse> {
   @override
-  Future<AsyncX<SignUpResponse>> build() => AsyncX.idle();
+  BuildXCallback<SignUpResponse> build() => idle();
 
   @useResult
-  Future<AsyncValue<AsyncX<SignUpResponse>>> run(SignUpRequest request) =>
-      handle(() => ref.read(authRepositoryProvider).signUp(request));
+  RunXCallback<SignUpResponse> run(SignUpRequest body) =>
+      handle(() => ref.read(authRepositoryProvider).signUp(body));
 }
 
 @RoutePage()
@@ -40,7 +40,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
     final passwordObscure = useState(true);
     final image = useState<CroppedFile?>(null);
 
-    final signUp = ref.watch(signUpProvider);
+    final signUpState = ref.watch(signUpProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.signUp)),
@@ -77,7 +77,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
             passwordObscure: passwordObscure,
           ),
           FilledButton(
-            onPressed: signUp.isLoading
+            onPressed: signUpState.isLoading
                 ? null
                 : () async {
                     if (_formKey.isNotValid()) return;
@@ -95,7 +95,9 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     result.whenDataOrError(
                       data: (data) async {
                         context.showSuccessSnackBar(context.l10n.signUpSuccess);
-                        await ref.read(authenticationProvider.notifier).update(
+                        await ref
+                            .read(authenticationPreferenceProvider.notifier)
+                            .update(
                           (state) {
                             return LoginResponse(
                               token: data.token,
@@ -112,7 +114,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                       },
                     );
                   },
-            child: signUp.isLoading
+            child: signUpState.isLoading
                 ? const LoadingWidget()
                 : Text(context.l10n.signUp),
           )

@@ -8,7 +8,7 @@ import 'preferences.dart';
 part 'authentication_provider.g.dart';
 
 @riverpod
-class Authentication extends _$Authentication
+class AuthenticationPreference extends _$AuthenticationPreference
     with NullableObjectPreferenceProvider {
   @override
   @protected
@@ -23,8 +23,4 @@ class Authentication extends _$Authentication
 
   @override
   Map<String, dynamic>? toJson(LoginResponse? value) => value?.toJson();
-
-  Future<void> logout() async {
-    await clear();
-  }
 }

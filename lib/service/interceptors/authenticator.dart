@@ -9,11 +9,13 @@ class Authenticator extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final token = ref.read(authenticationProvider)?.token;
+    final token = ref.read(authenticationPreferenceProvider)?.token;
 
-    options.headers.addAll({
-      "token": token,
-    });
+    if (token != null) {
+      options.headers.addAll({
+        "token": token,
+      });
+    }
 
     super.onRequest(options, handler);
   }

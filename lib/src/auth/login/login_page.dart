@@ -1,25 +1,18 @@
+import 'package:riverpod_state/riverpod_state.dart';
 import 'package:starter/common_lib.dart';
 import 'package:starter/data/repositories/auth_repository.dart';
-import 'package:starter/data/shared_preferences/authentication_provider.dart';
-import 'package:starter/riverpod/riverpod.dart';
 import 'package:starter/service/clients/_clients.dart';
 
 part 'login_page.g.dart';
 
 @riverpod
-class Login extends _$Login with AsyncXProvider {
+class Login extends _$Login with AsyncXNotifierMixin<LoginResponse> {
   @override
-  Future<AsyncX<LoginResponse>> build() => AsyncX.idle();
+  BuildXCallback<LoginResponse> build() => idle();
 
   @useResult
-  Future<AsyncValue<AsyncX<LoginResponse>>> run(LoginRequest data) =>
-      handle(() async {
-        final result = await ref.read(authRepositoryProvider).login(data);
-        await ref
-            .read(authenticationProvider.notifier)
-            .update((state) => result);
-        return result;
-      });
+  RunXCallback<LoginResponse> run(LoginRequest data) =>
+      handle(() => ref.read(authRepositoryProvider).login(data));
 }
 
 @RoutePage()
@@ -35,7 +28,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final login = ref.watch(loginProvider);
+    final loginState = ref.watch(loginProvider);
 
     final phoneNumber = useTextEditingController();
     final password = useTextEditingController();
@@ -63,10 +56,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             passwordObscure: passwordObscure,
           ),
           FilledButton(
-            onPressed: login.isLoading
+            onPressed: loginState.isLoading
                 ? null
                 : () async {
                     if (_formKey.isNotValid()) return;
+
                     final data = LoginRequest(
                       username: phoneNumber.text,
                       password: password.text,
@@ -89,7 +83,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       },
                     );
                   },
-            child: login.isLoading
+            child: loginState.isLoading
                 ? const LoadingWidget()
                 : Text(context.l10n.login),
           ),

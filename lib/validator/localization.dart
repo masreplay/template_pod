@@ -1,5 +1,5 @@
 import 'package:form_validator/form_validator.dart';
-import 'package:ekyc/common_lib.dart';
+import 'package:starter/common_lib.dart';
 
 class FormValidatorLocaleApp implements FormValidatorLocale {
   final BuildContext context;

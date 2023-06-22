@@ -19,9 +19,10 @@ class AppRouter extends _$AppRouter {
 
   AppRouter(this.ref);
 
-  List<AutoRouteGuard> get authenticatedGuards => [AuthenticatedGuard(ref)];
+  List<AutoRouteGuard> get authenticatedGuards =>
+      [AuthenticatedGuard(ref, ensureAuthenticated: true)];
   List<AutoRouteGuard> get notAuthenticatedGuards =>
-      [NotAuthenticatedGuard(ref)];
+      [AuthenticatedGuard(ref, ensureAuthenticated: false)];
 
   @override
   List<AutoRoute> get routes {

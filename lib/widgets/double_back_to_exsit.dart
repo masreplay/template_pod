@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:starter/common_lib.dart';
 
 class DoubleBackToExit extends StatefulWidget {
